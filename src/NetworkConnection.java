@@ -10,7 +10,7 @@ class NetworkConnection
       //Connection type to server/client?
       try
       {
-      
+         host = InetAddress.getLocalHost();//Self
       }
       catch(UnknownHostException e)
       {
