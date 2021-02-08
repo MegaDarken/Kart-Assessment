@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class DisplayPanel extends JPanel implements ActionListener
 {
-   private final int maximumImageLabels
+   private final int maximumImageLabels = 100;//Arbitary
    
    private final int windowStartingPositionX = 640;
    private final int windowStartingPositionY = 480;
@@ -20,10 +20,22 @@ public class DisplayPanel extends JPanel implements ActionListener
         setLayout(null);//Disable Grid
         
         JFrame frame = new JFrame();
-        dp.setBounds(windowStartingPositionX, windowStartingPositionY, windowStartSizeX, windowStartSizeY);
+        frame.setBounds(windowStartingPositionX, windowStartingPositionY, windowStartingSizeX, windowStartingSizeY);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
-        //Keymap 
+        //Keybinds
+        // Keymap frameMap = frame.getKeymap();
+//         
+//         KeyStroke moveForwards = KeyStroke.getKeyStroke(KeyEvent.VK_W);//,InputEvent.SHIFT_MASK
+//         KeyStroke moveBackwards = KeyStroke.getKeyStroke(KeyEvent.VK_S);
+//         KeyStroke moveLeft = KeyStroke.getKeyStroke(KeyEvent.VK_A);
+//         KeyStroke moveRight = KeyStroke.getKeyStroke(KeyEvent.VK_D);
+//         
+//         frameMap.addActionForKeyStroke(moveForwards, new actionForwards());
+//         frameMap.addActionForKeyStroke(moveBackwards, new actionBackwards());
+//         frameMap.addActionForKeyStroke(moveLeft, new actionLeft());
+//         frameMap.addActionForKeyStroke(moveRight, new actionRight());
+        
    }
    
    
@@ -32,11 +44,32 @@ public class DisplayPanel extends JPanel implements ActionListener
       
          if(e.getSource() == timer)
          {
-            handleImageAnimation();
+            //handleImageAnimation();
             
             repaint();
          }
       
    }
+   
+   // private void actionForwards()
+//    {
+//    
+//    }
+//    
+//    private void actionBackwards()
+//    {
+//    
+//    }
+//    
+//    private void actionLeft()
+//    {
+//    
+//    }
+//    
+//    private void actionRight()
+//    {
+//    
+//    }
+
 
 }
