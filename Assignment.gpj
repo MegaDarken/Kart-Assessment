@@ -17,13 +17,15 @@ s#n0classes
 s#p0doc
 s#q0test
 s#w0canvas
-!111;g
+!141;g
 %\011src%sDisplayPanel.java
+%\011src%sPacketHandling.java
 %\011src%sRaceKart.java
 %\011src%sNetworkConnection.java
 %\011src%sAssessMode.java
-!111;f
+!141;f
 %\011src%sDisplayPanel.java
+%\011src%sPacketHandling.java
 %\011src%sRaceKart.java
 %\011src%sNetworkConnection.java
 %\011src%sAssessMode.java
