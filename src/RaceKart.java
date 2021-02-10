@@ -50,4 +50,16 @@ public class RaceKart
       xPosition += xVelocity;
       yPosition += yVelocity;
    }
+   
+   
+   private int getCardinalDirection();
+   {
+      int cardinalValue = Math.round(Bearing * PI_CARDINAL_RATIO);
+   
+      cardinalValue = cardinalValue % DIRECTIONS;
+      
+      
+      
+      return cardinalValue;
+   }
 }
