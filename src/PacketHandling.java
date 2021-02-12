@@ -51,7 +51,26 @@ public class PacketHandling
       
    }
    
+   private void addConnection(InetAddress newAddress, int newPort)
+   {
+      for (int i = 0; i < SERVER_MAX_CONNECTIONS; i++)
+      {
+         if(connectionAddress[i] == null && connectionPort[i] == -1)
+         {
+            connectionAddress[i] = newAddress;
+            connectionPort[i] = newPort;
+            
+            return;
+         }
+      }
+   }
    
+   private void removeConnection(int index)
+   {
+      connectionAddress[index] = null;
+      connectionPort[index] = -1;
+   }
+
    
    
    private boolean SendPacket(String dataSent, int hostIndex)
