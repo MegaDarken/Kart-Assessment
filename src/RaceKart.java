@@ -54,12 +54,10 @@ public class RaceKart
    
    private int getCardinalDirection()
    {
-      int cardinalValue = (int)Math.round(Bearing * PI_CARDINAL_RATIO);
+      long cardinalValue = Math.round(Bearing * PI_CARDINAL_RATIO);
    
-      cardinalValue = cardinalValue % DIRECTIONS;
+      int output = (int)(cardinalValue % DIRECTIONS);
       
-      
-      
-      return cardinalValue;
+      return output;
    }
 }
