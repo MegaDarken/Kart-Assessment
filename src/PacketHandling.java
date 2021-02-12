@@ -9,6 +9,8 @@ public class PacketHandling
    
    static final int MAX_CONNECTIONS = 1;
    
+   static final int SOCKET_TIMEOUT = 1000;
+   
    static final String RESPONCE_STRING = "Received";
    
    private DatagramSocket socket;
@@ -39,6 +41,9 @@ public class PacketHandling
          connectionAddress = new InetAddress[MAX_CONNECTIONS];
          connectionPort = new int[MAX_CONNECTIONS];
       }
+      
+      socket.setSoTimeout(SOCKET_TIMEOUT); //In ms
+      
       }
 		//catch( UnknownHostException e )
 		//{
