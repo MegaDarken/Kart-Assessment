@@ -51,6 +51,9 @@ public class PacketHandling
       
    }
    
+   
+   
+   
    private boolean SendPacket(String dataSent, int hostIndex)
    {
       try
@@ -185,6 +188,8 @@ public class PacketHandling
 			packet.setPort( senderPort );
          
          socket.send( packet );
+         
+         return dataReceived;
          
       }
 		catch( UnknownHostException e )
