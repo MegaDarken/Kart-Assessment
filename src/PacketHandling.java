@@ -14,6 +14,8 @@ public class PacketHandling
    static final String RESPONCE_STRING = "Received";
    static final String REQUEST_VERIFY_STRING = "Verify Existance";
    
+   private boolean isServer;
+   
    private DatagramSocket socket;
    
    private DatagramPacket currentPacket;
@@ -24,6 +26,8 @@ public class PacketHandling
    
    public PacketHandling(boolean isServer)
    {
+      this.isServer = isServer;
+   
       try
 	  	{
       
@@ -231,7 +235,7 @@ public class PacketHandling
    
    public void CheckConnections()
    {
-      if (isServer)
+      if (this.isServer)
       {
          //For each client
          for (int i = 0; i < SERVER_MAX_CONNECTIONS; i++)
@@ -261,5 +265,16 @@ public class PacketHandling
       }
    }
    
-   
+   public void ProcessPacket()
+   {
+      String data = ReceivePacket();
+      
+      switch (data)
+      {
+         default:
+         
+            break;
+         
+      }
+   }
 }
