@@ -274,7 +274,12 @@ public class PacketHandling
          default:
          
             break;
+         case RESPONCE_STRING:
          
+            break;
+         case REQUEST_VERIFY_STRING:
+         
+            break;
       }
    }
 }
