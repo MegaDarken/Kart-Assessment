@@ -11,8 +11,8 @@ public class PacketHandling
    
    static final int SOCKET_TIMEOUT = 1000;
    
-   static final String RESPONCE_STRING = "Received";
-   static final String REQUEST_VERIFY_STRING = "Verify Existance";
+   static final byte RESPONCE_STRING = (byte)'R';//"Received";
+   static final byte REQUEST_VERIFY_STRING = (byte)'V';//"Verify Existance";
    
    private boolean isServer;
    
@@ -82,7 +82,7 @@ public class PacketHandling
    }
 
    
-   private boolean SendPacket(String dataSent, int hostIndex)
+   private boolean SendPacket(byte[] dataSent, int hostIndex)
    {
       try
 		{
@@ -121,7 +121,7 @@ public class PacketHandling
          
          ByteArrayInputStream bytesIn= new ByteArrayInputStream( packet.getData());
          
-         String dataReceived = "";
+         byte[] dataReceived = new byte[packet.getLength()];
          
          for (int i=0; i < packet.getLength(); i++)
          { 
@@ -135,12 +135,12 @@ public class PacketHandling
             {
                //System.out.print( (char) data);
                
-               dataReceived += (char) data;
+               dataReceived[i] = (byte)data;
             }
          } 
          
          //Calculate if received correctly
-         return (this.connectionAddress[hostIndex] == senderAddress && this.connectionPort[hostIndex] == senderPort) && dataReceived == RESPONCE_STRING;
+         return (this.connectionAddress[hostIndex] == senderAddress && this.connectionPort[hostIndex] == senderPort) && dataReceived[0] == RESPONCE_STRING;
          
 		}
 		catch( UnknownHostException e )
@@ -156,7 +156,7 @@ public class PacketHandling
    }
    
    
-   private String ReceivePacket()
+   private byte[] ReceivePacket()
    {
    
    
@@ -177,7 +177,7 @@ public class PacketHandling
          
          ByteArrayInputStream bytesIn= new ByteArrayInputStream( packet.getData());
          
-         String dataReceived = "";
+         byte[] dataReceived = new byte[packet.getLength()];
          
          for (int i=0; i < packet.getLength(); i++)
          { 
@@ -191,7 +191,7 @@ public class PacketHandling
             {
                //System.out.print( (char) data);
                
-               dataReceived += (char) data;
+               dataReceived[i] = (byte)data;
             }
          } 
          
@@ -241,7 +241,7 @@ public class PacketHandling
          for (int i = 0; i < SERVER_MAX_CONNECTIONS; i++)
          {
             //Check connection
-            boolean responded = this.SendPacket(REQUEST_VERIFY_STRING, i);
+            boolean responded = this.SendPacket(new byte[]{REQUEST_VERIFY_STRING}, i);
          
             //No responce
             if (!responded)
@@ -253,7 +253,7 @@ public class PacketHandling
       else
       {
          //Check connection
-         boolean responded = this.SendPacket(REQUEST_VERIFY_STRING, 0);
+         boolean responded = this.SendPacket(new byte[]{REQUEST_VERIFY_STRING}, 0);
          
          //No responce
          if (!responded)
@@ -267,9 +267,9 @@ public class PacketHandling
    
    public void ProcessPacket()
    {
-      String data = ReceivePacket();
+      byte[] data = ReceivePacket();
       
-      switch (data)
+      switch (data[0])
       {
          default:
          
