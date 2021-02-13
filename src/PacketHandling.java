@@ -12,6 +12,7 @@ public class PacketHandling
    static final int SOCKET_TIMEOUT = 1000;
    
    static final String RESPONCE_STRING = "Received";
+   static final String REQUEST_VERIFY_STRING = "Verify Existance";
    
    private DatagramSocket socket;
    
@@ -76,7 +77,6 @@ public class PacketHandling
       connectionPort[index] = -1;
    }
 
-   
    
    private boolean SendPacket(String dataSent, int hostIndex)
    {
@@ -227,4 +227,39 @@ public class PacketHandling
       
       return null;
    }
+   
+   
+   public void CheckConnections()
+   {
+      if (isServer)
+      {
+         //For each client
+         for (int i = 0; i < SERVER_MAX_CONNECTIONS; i++)
+         {
+            //Check connection
+            boolean responded = this.SendPacket(REQUEST_VERIFY_STRING, i);
+         
+            //No responce
+            if (!responded)
+            {
+               removeConnection(i);
+            }
+         }
+      }
+      else
+      {
+         //Check connection
+         boolean responded = this.SendPacket(REQUEST_VERIFY_STRING, 0);
+         
+         //No responce
+         if (!responded)
+         {
+            //Attempt Reconnect
+            
+            //Go into Timeout mode
+         }
+      }
+   }
+   
+   
 }
