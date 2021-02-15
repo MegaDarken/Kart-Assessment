@@ -12,7 +12,12 @@ public class GameWorld
    
    public GameWorld()
    {
+      if (AssessMode.AsServer)
+      {
       
+      }
+      
+      Karts = new RaceKart[MAXIMUM_RACEKARTS];
    }
    
    
