@@ -112,6 +112,22 @@ public class RaceKart
       TickForwardVelocity();
    }
    
+   public float X()
+   {
+      return this.xPosition;
+   }
+   
+   public float Y()
+   {
+      return this.yPosition;
+   }
+   
+   public void SetPosition(float x, float y)
+   {
+      this.xPosition = x;
+      this.yPosition = y;
+   }
+
    
    private int getCardinalDirection()
    {
