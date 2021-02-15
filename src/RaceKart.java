@@ -29,6 +29,9 @@ public class RaceKart
    static final double DEFAULT_ACCELERATION = 0.5;
    static final double DEFAULT_TOP_SPEED = 5;
 
+
+   static final int CONTROLS_FWD_BWD = 0;
+
    //Attributes that should stay the same
    private String livery;
    
@@ -91,6 +94,22 @@ public class RaceKart
    {
       this.xVelocity -= this.acceleration;
       this.yVelocity -= this.acceleration;
+   }
+   
+   public void TickForward(byte[] controls)
+   {
+      //Accelerate/Decelerate based on controls
+      if (controls[CONTROLS_FWD_BWD] > 0)
+      {
+         TickForwardAccelerate();
+      }
+      else if (controls[CONTROLS_FWD_BWD] < 0)
+      {
+         TickForwardDecelerate();
+      }
+      
+   
+      TickForwardVelocity();
    }
    
    
