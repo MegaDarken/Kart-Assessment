@@ -24,11 +24,17 @@ public class RaceKart
    static final int NORTH_WEST = 14;
    static final int NORTH_NORTH_WEST = 15;
 
+   static final String DEFAULT_LIVERY = "Bot";
+   static final int DEFAULT_WEIGHT = 5;
+   static final double DEFAULT_ACCELERATION = 0.5;
+   static final double DEFAULT_TOP_SPEED = 5;
 
    //Attributes that should stay the same
    private String livery;
    
    private int weight;
+   private double acceleration;// U/T/T
+   private double top_speed;// U/T
    
    //Attributes that should change
    private float xPosition;
@@ -40,9 +46,20 @@ public class RaceKart
    private float Bearing;
    
    
+   public RaceKart(String livery, int weight, double acceleration, double top_speed)
+   {
+      this.livery = livery;
+      this.weight = weight;
+      this.acceleration = acceleration;
+      this.top_speed = top_speed;
+   }
+   
    public RaceKart()
    {
-   
+      this.livery = DEFAULT_LIVERY;
+      this.weight = DEFAULT_WEIGHT;
+      this.acceleration = DEFAULT_ACCELERATION;
+      this.top_speed = DEFAULT_TOP_SPEED;
    }
    
    private void TickForwardVelocity()
@@ -50,6 +67,8 @@ public class RaceKart
       xPosition += xVelocity;
       yPosition += yVelocity;
    }
+   
+   
    
    
    private int getCardinalDirection()
