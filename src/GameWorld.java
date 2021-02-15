@@ -1,7 +1,7 @@
 //File: GameWorld.java
 
 
-public static class GameWorld
+public class GameWorld
 {
    //Constants
    private final int MAXIMUM_RACEKARTS = 4;
