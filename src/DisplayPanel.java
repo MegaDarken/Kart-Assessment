@@ -5,13 +5,14 @@ import javax.swing.*;
 
 public class DisplayPanel extends JPanel implements ActionListener
 {
-   private final int maximumImageLabels = 100;//Arbitary
+   private final int MAXIMUM_IMAGE_LABELS = 16;//Arbitary Magic
    
    private final int windowStartingPositionX = 640;
    private final int windowStartingPositionY = 480;
    private final int windowStartingSizeX = 640;
    private final int windowStartingSizeY = 480;
    
+   private JFrame frame;
    private JLabel[] imageLabels;
    private Timer timer;
    
@@ -19,9 +20,11 @@ public class DisplayPanel extends JPanel implements ActionListener
    {
         setLayout(null);//Disable Grid
         
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setBounds(windowStartingPositionX, windowStartingPositionY, windowStartingSizeX, windowStartingSizeY);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        
+        imageLabels = new JLabel[MAXIMUM_IMAGE_LABELS];
         
         //Keybinds
         JPanel framePanel = (JPanel) frame.getContentPane();
