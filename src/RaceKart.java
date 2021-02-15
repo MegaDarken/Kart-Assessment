@@ -52,6 +52,12 @@ public class RaceKart
       this.weight = weight;
       this.acceleration = acceleration;
       this.top_speed = top_speed;
+      
+      this.xPosition = 0;
+      this.yPosition = 0;
+      
+      this.xVelocity = 0;
+      this.yVelocity = 0;
    }
    
    public RaceKart()
@@ -60,15 +66,32 @@ public class RaceKart
       this.weight = DEFAULT_WEIGHT;
       this.acceleration = DEFAULT_ACCELERATION;
       this.top_speed = DEFAULT_TOP_SPEED;
+      
+      this.xPosition = 0;
+      this.yPosition = 0;
+      
+      this.xVelocity = 0;
+      this.yVelocity = 0;
+
    }
    
    private void TickForwardVelocity()
    {
-      xPosition += xVelocity;
-      yPosition += yVelocity;
+      this.xPosition += this.xVelocity;
+      this.yPosition += this.yVelocity;
    }
    
+   private void TickForwardAccelerate()
+   {
+      this.xVelocity += this.acceleration;
+      this.yVelocity += this.acceleration;
+   }
    
+   private void TickForwardDecelerate()
+   {
+      this.xVelocity -= this.acceleration;
+      this.yVelocity -= this.acceleration;
+   }
    
    
    private int getCardinalDirection()
