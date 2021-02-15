@@ -3,18 +3,21 @@ import java.net.*;
 
 class NetworkConnection
 {
-   public InetAddress host = null;
+   private InetAddress hostAddress;
+   private int hostPort;
    
-   public NetworkConnection()
+   public NetworkConnection(InetAddress hostAddress, int hostPort)
    {
       //Connection type to server/client?
-      try
-      {
-         host = InetAddress.getLocalHost();//Self
-      }
-      catch(UnknownHostException e)
-      {
-         System.out.println("ERR: Unable to resolve name and address");
-      }
+      // try
+//       {
+//          //host = InetAddress.getLocalHost();//Self
+         this.hostAddress = hostAddress;
+         this.hostPort = hostPort;
+//       }
+//       catch(UnknownHostException e)
+//       {
+//          System.out.println("ERR: Unable to resolve name and address");
+//       }
    }
 }
