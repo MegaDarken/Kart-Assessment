@@ -9,6 +9,7 @@ public class GameWorld
 
    //Game Objects
    private RaceKart[] Karts;
+   private int clientKart;
    
    public GameWorld()
    {
@@ -20,5 +21,13 @@ public class GameWorld
       Karts = new RaceKart[MAXIMUM_RACEKARTS];
    }
    
+   public int GetClientKart()
+   {
+      return this.clientKart;
+   }
    
+   public void SetClientKart(int value)
+   {
+      this.clientKart = value;
+   }
 }
