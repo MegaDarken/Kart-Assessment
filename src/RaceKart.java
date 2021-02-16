@@ -1,7 +1,7 @@
 //File: RaceKart.java
+import java.io.Serializable;
 
-
-public class RaceKart
+public class RaceKart implements Serializable
 {
    //Constants
    static final int DIRECTIONS = 16;
