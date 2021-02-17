@@ -24,6 +24,11 @@ public class RaceKart implements Serializable
    static final int NORTH_WEST = 14;
    static final int NORTH_NORTH_WEST = 15;
 
+   private final String KART_LIVERY_RED = "Red";
+   private final String KART_LIVERY_GREEN = "Green";
+   private final String KART_LIVERY_BLUE = "Blue";
+   private final String KART_LIVERY_BOT = "Bot";
+
    static final String DEFAULT_LIVERY = "Bot";
    static final int DEFAULT_WEIGHT = 5;
    static final double DEFAULT_ACCELERATION = 0.5;
@@ -128,12 +133,22 @@ public class RaceKart implements Serializable
       this.yPosition = y;
    }
 
+   public String Livery()
+   {
+      return this.livery;
+   }
+   
+   public void Livery(String value)
+   {
+      this.livery = value;
+   }
+
    protected double GetVelocity()
    {
       return Math.sqrt((this.xVelocity*this.xVelocity)+(this.yVelocity*this.yVelocity));
    }
    
-   private int getCardinalDirection()
+   public int GetCardinalDirection()
    {
       long cardinalValue = Math.round(Bearing * PI_CARDINAL_RATIO);
    
@@ -141,4 +156,7 @@ public class RaceKart implements Serializable
       
       return output;
    }
+   
+   
+   
 }
