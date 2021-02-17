@@ -86,14 +86,14 @@ public class RaceKart implements Serializable
    
    private void TickForwardAccelerate()
    {
-      this.xVelocity += (this.acceleration * Math.sin(Bearing));
-      this.yVelocity += (this.acceleration * Math.cos(Bearing));
+      this.xVelocity += (this.acceleration * Math.sin(this.Bearing));
+      this.yVelocity += (this.acceleration * Math.cos(this.Bearing));
    }
    
    private void TickForwardDecelerate()
    {
-      this.xVelocity -= (this.acceleration * Math.sin(Bearing));
-      this.yVelocity -= (this.acceleration * Math.cos(Bearing));
+      this.xVelocity -= (this.acceleration * Math.sin(this.Bearing));
+      this.yVelocity -= (this.acceleration * Math.cos(this.Bearing));
    }
    
    public void TickForward(byte[] controls)
@@ -128,6 +128,10 @@ public class RaceKart implements Serializable
       this.yPosition = y;
    }
 
+   protected double GetVelocity()
+   {
+      return Math.sqrt((this.xVelocity*this.xVelocity)+(this.yVelocity*this.yVelocity));
+   }
    
    private int getCardinalDirection()
    {
