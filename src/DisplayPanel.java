@@ -14,6 +14,17 @@ public class DisplayPanel extends JPanel implements ActionListener
    private final int windowStartingSizeX = 640;
    private final int windowStartingSizeY = 480;
    
+   private final int KART_DIRECTIONS = 16;
+   
+   private final String IMAGE_DIRECTORY = "./Graphics/";
+   private final String IMAGE_KART_FILENAME = "Kart";
+   private final String IMAGE_FILE_EXTENSION = ".jpg";
+   
+   private final String IMAGE_LIVERY_RED = "Red";
+   private final String IMAGE_LIVERY_GREEN = "Green";
+   private final String IMAGE_LIVERY_BLUE = "Blue";
+   private final String IMAGE_LIVERY_BOT = "Bot";
+   
    
    //Window Elements
    private ImageIcon[] imageIcons;
@@ -38,6 +49,9 @@ public class DisplayPanel extends JPanel implements ActionListener
         //Initalize images
         imageIcons = new ImageIcon[MAXIMUM_IMAGE_ICONS];
         imageLabels = new JLabel[MAXIMUM_IMAGE_LABELS];
+        
+        //Load Resources
+        LoadKartImages();
         
         //Keybinds
         JPanel framePanel = (JPanel) frame.getContentPane();
@@ -125,5 +139,16 @@ public class DisplayPanel extends JPanel implements ActionListener
    
    }
 
-
+   //Loading
+   private void LoadKartImages()
+   {
+      for (int i = 0; i < KART_DIRECTIONS; i++)
+      {
+         imageIcons[i] = new ImageIcon(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
+         imageIcons[i + (KART_DIRECTIONS)] = new ImageIcon(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_GREEN + i + IMAGE_FILE_EXTENSION));
+         imageIcons[i + (KART_DIRECTIONS * 2)] = new ImageIcon(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BLUE + i + IMAGE_FILE_EXTENSION));
+         imageIcons[i + (KART_DIRECTIONS * 3)] = new ImageIcon(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BOT + i + IMAGE_FILE_EXTENSION));
+      }
+   }
+   
 }
