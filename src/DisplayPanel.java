@@ -6,6 +6,7 @@ import javax.swing.*;
 public class DisplayPanel extends JPanel implements ActionListener
 {
    //Constants
+   private final int MAXIMUM_IMAGE_ICONS = 64;
    private final int MAXIMUM_IMAGE_LABELS = 16;//Arbitary Magic
    
    private final int windowStartingPositionX = 640;
@@ -15,6 +16,8 @@ public class DisplayPanel extends JPanel implements ActionListener
    
    
    //Window Elements
+   private ImageIcon[] imageIcons;
+   
    private JFrame frame;
    private JLabel[] imageLabels;
    private Timer timer;
@@ -33,6 +36,7 @@ public class DisplayPanel extends JPanel implements ActionListener
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
         //Initalize images
+        imageIcons = new ImageIcon[MAXIMUM_IMAGE_ICONS];
         imageLabels = new JLabel[MAXIMUM_IMAGE_LABELS];
         
         //Keybinds
