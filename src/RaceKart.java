@@ -86,14 +86,14 @@ public class RaceKart implements Serializable
    
    private void TickForwardAccelerate()
    {
-      this.xVelocity += this.acceleration;
-      this.yVelocity += this.acceleration;
+      this.xVelocity += (this.acceleration * Math.sin(Bearing));
+      this.yVelocity += (this.acceleration * Math.cos(Bearing));
    }
    
    private void TickForwardDecelerate()
    {
-      this.xVelocity -= this.acceleration;
-      this.yVelocity -= this.acceleration;
+      this.xVelocity -= (this.acceleration * Math.sin(Bearing));
+      this.yVelocity -= (this.acceleration * Math.cos(Bearing));
    }
    
    public void TickForward(byte[] controls)
