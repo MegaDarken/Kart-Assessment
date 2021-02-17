@@ -151,4 +151,37 @@ public class DisplayPanel extends JPanel implements ActionListener
       }
    }
    
+   private int SelectKartImageIndex(RaceKart currentKart)
+   {
+      if (currentKart != null)
+      {
+         //Kart Direction
+         int index = currentKart.GetCardinalDirection();
+         
+         //Which Livery
+         if (currentKart.Livery().equals(IMAGE_LIVERY_GREEN))
+         {
+            index += (KART_DIRECTIONS);
+         }
+         else if (currentKart.Livery().equals(IMAGE_LIVERY_GREEN))
+         {
+            index += (KART_DIRECTIONS * 2);
+         }
+         else if (currentKart.Livery().equals(IMAGE_LIVERY_GREEN))
+         {
+            index += (KART_DIRECTIONS * 3);
+         }
+         
+         
+         return index;
+      }
+      
+      return -1;
+   }
+   
+   private ImageIcon SelectKartImage(RaceKart currentKart)
+   {
+      return imageIcons[SelectKartImageIndex(currentKart)];
+   }
+   
 }
