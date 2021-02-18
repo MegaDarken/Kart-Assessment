@@ -40,6 +40,7 @@ public class DisplayPanel extends JPanel implements ActionListener
    private final byte INPUT_OFF_VALUE = 0;
    
    //Attributes
+      
    
    //input
    private byte[] inputKeyMatrix;
@@ -169,8 +170,8 @@ public class DisplayPanel extends JPanel implements ActionListener
         });
         
         //Timer
-        //timer = new Timer(1000 / TICKS_PER_SECOND, this);
-        //timer.start();
+        timer = new Timer(1000 / TICKS_PER_SECOND, this);
+        timer.start();
    }
    
    
@@ -251,6 +252,18 @@ public class DisplayPanel extends JPanel implements ActionListener
    private ImageIcon SelectKartImage(RaceKart currentKart)
    {
       return imageIcons[SelectKartImageIndex(currentKart)];
+   }
+
+   private void MoveKarts()
+   {
+      //For each kart in GameWorld
+      
+      //Get Kart Image
+      
+      //Get Corrisonding label
+      
+      // Apply Image to label
+      
    }
 
 }
