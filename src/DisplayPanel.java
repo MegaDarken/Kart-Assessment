@@ -6,7 +6,7 @@ import javax.swing.*;
 public class DisplayPanel extends JPanel implements ActionListener
 {
    //Constants
-   //private final int TICKS_PER_SECOND = 30;
+   private final int TICKS_PER_SECOND = 30;
    
    private final int MAXIMUM_IMAGE_ICONS = 64;//16 Karts * 4 Liverys
    private final int MAXIMUM_IMAGE_LABELS = 16;//Arbitary Magic
