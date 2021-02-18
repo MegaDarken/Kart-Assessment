@@ -21,6 +21,12 @@ class AssessMode
       //Determine running mode
       AsServer = Arrays.asList(args).contains(ARGUMENT_SERVER);
       
+      if (!AsServer)
+      {
+      //Launch Window
+      DisplayPanel window = new DisplayPanel();
+      window.setVisible(true);
       
+      }
    }
 }
