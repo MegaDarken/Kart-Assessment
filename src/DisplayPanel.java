@@ -18,6 +18,9 @@ public class DisplayPanel extends JPanel implements ActionListener
    
    private final int KART_DIRECTIONS = 16;
    
+   private final int KART_IMAGE_WIDTH = 50;
+   private final int KART_IMAGE_HEIGHT = 50;
+   
    //Image(s)
    private final String IMAGE_DIRECTORY = "./Graphics/";
    private final String IMAGE_KART_FILENAME = "Kart";
@@ -68,6 +71,7 @@ public class DisplayPanel extends JPanel implements ActionListener
         //Initalize images
         imageIcons = new ImageIcon[MAXIMUM_IMAGE_ICONS];
         imageLabels = new JLabel[MAXIMUM_IMAGE_LABELS];
+        
         
         //Load Resources
         LoadKartImages();
@@ -254,6 +258,14 @@ public class DisplayPanel extends JPanel implements ActionListener
       return imageIcons[SelectKartImageIndex(currentKart)];
    }
 
-   
+   private void UpdateKartImages(RaceKart[] Karts)
+   {
+      for(int i = 0; i < Karts.length; i++)
+      {
+         imageLabels[i] = new JLabel(SelectKartImage(Karts[i]));
+      
+         imageLabels[i].setBounds(Math.round(Karts[i].X()), Math.round(Karts[i].Y()), KART_IMAGE_WIDTH, KART_IMAGE_HEIGHT);
+      }
+   }
 
 }
