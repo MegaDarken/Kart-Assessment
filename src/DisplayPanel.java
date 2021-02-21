@@ -254,16 +254,6 @@ public class DisplayPanel extends JPanel implements ActionListener
       return imageIcons[SelectKartImageIndex(currentKart)];
    }
 
-   private void MoveKarts()
-   {
-      //For each kart in GameWorld
-      
-      //Get Kart Image
-      
-      //Get Corrisonding label
-      
-      // Apply Image to label
-      
-   }
+   
 
 }

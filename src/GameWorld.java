@@ -30,4 +30,16 @@ public class GameWorld
    {
       this.clientKart = value;
    }
+   
+   private void MoveKarts()
+   {
+      //For each kart in GameWorld
+      
+      //Get Kart Image
+      
+      //Get Corrisonding label
+      
+      // Apply Image to label
+      
+   }
 }
