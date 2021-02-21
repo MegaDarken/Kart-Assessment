@@ -11,6 +11,8 @@ class AssessMode
    //Vars
    static boolean AsServer;
    
+   static GameWorld world;
+   
    //
 
 
@@ -20,6 +22,8 @@ class AssessMode
       
       //Determine running mode
       AsServer = Arrays.asList(args).contains(ARGUMENT_SERVER);
+      
+      world = new GameWorld();
       
       if (!AsServer)
       {
