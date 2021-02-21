@@ -19,6 +19,19 @@ public class GameWorld
       }
       
       Karts = new RaceKart[MAXIMUM_RACEKARTS];
+      
+      //Debug
+      Karts[0] = new RaceKart("Red", 1, 1, 1);
+      Karts[0].SetPosition(10, 10);
+      
+      Karts[1] = new RaceKart("Green", 1, 1, 1);
+      Karts[1].SetPosition(110, 10);
+      
+      Karts[2] = new RaceKart("Blue", 1, 1, 1);
+      Karts[2].SetPosition(10, 110);
+      
+      Karts[3] = new RaceKart("Red", 1, 1, 1);
+      Karts[3].SetPosition(110, 110);
    }
    
    public int GetClientKart()
