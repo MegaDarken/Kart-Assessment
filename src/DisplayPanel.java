@@ -76,6 +76,13 @@ public class DisplayPanel extends JPanel implements ActionListener
         //Load Resources
         LoadKartImages();
         
+        for (int i = 0; i < MAXIMUM_IMAGE_LABELS; i++)
+        {
+            imageLabels[i] = new JLabel(imageIcons[i]);
+            
+            add(imageLabels[i]);
+        }
+        
         //Keybinds
         inputKeyMatrix = new byte[INPUT_KEY_MATRIX_SIZE];
         
@@ -186,6 +193,8 @@ public class DisplayPanel extends JPanel implements ActionListener
          {
             //handleImageAnimation();
             
+            
+            
             repaint();
          }
       
@@ -262,7 +271,7 @@ public class DisplayPanel extends JPanel implements ActionListener
    {
       for(int i = 0; i < Karts.length; i++)
       {
-         imageLabels[i] = new JLabel(SelectKartImage(Karts[i]));
+         imageLabels[i].setIcon(SelectKartImage(Karts[i]));
       
          imageLabels[i].setBounds(Math.round(Karts[i].X()), Math.round(Karts[i].Y()), KART_IMAGE_WIDTH, KART_IMAGE_HEIGHT);
       }
