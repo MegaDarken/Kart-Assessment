@@ -5,7 +5,7 @@ public class RaceKart implements Serializable
 {
    //Constants
    static final int DIRECTIONS = 16;
-   static final double PI_CARDINAL_RATIO = Math.PI/16;
+   static final double PI_CARDINAL_RATIO = Math.PI*0.125;///8;
    
    static final int NORTH = 0;
    static final int NORTH_NORTH_EAST = 1;
