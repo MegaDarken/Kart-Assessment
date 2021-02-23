@@ -192,6 +192,7 @@ public class DisplayPanel extends JPanel implements ActionListener
          if(e.getSource() == timer)
          {
             //handleImageAnimation();
+            AssessMode.world.MoveKarts();
             
             //paintComponent();
             
