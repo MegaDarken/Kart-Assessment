@@ -60,6 +60,9 @@ public class GameWorld
          
       }
       
-      world.UpdateKartImages(Karts);
+      if(!AssessMode.AsServer)
+      {
+         AssessMode.GetPanel().UpdateKartImages(Karts);
+      }
    }
 }
