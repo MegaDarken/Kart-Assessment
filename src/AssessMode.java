@@ -22,7 +22,13 @@ public class AssessMode extends JFrame
    static GameWorld world;
    
    //Vars
-   private DisplayPanel panel;
+   static private DisplayPanel panel;
+   
+   static public DisplayPanel GetPanel()
+   {
+      return panel;
+   }
+   
 
    //Constructor
    public AssessMode()
