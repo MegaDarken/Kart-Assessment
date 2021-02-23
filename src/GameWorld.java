@@ -47,12 +47,19 @@ public class GameWorld
    private void MoveKarts()
    {
       //For each kart in GameWorld
+      for(int kart = 0; kart < MAXIMUM_RACEKARTS; kart++)
+      {
+         
+         Karts[kart].TickForward(new byte[2]);
+         
+         //Get Kart Image
+         
+         //Get Corrisonding label
+         
+         // Apply Image to label
+         
+      }
       
-      //Get Kart Image
-      
-      //Get Corrisonding label
-      
-      // Apply Image to label
-      
+      world.UpdateKartImages(Karts);
    }
 }
