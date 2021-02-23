@@ -44,7 +44,7 @@ public class GameWorld
       this.clientKart = value;
    }
    
-   private void MoveKarts()
+   public void MoveKarts()
    {
       //For each kart in GameWorld
       for(int kart = 0; kart < MAXIMUM_RACEKARTS; kart++)
