@@ -193,7 +193,7 @@ public class DisplayPanel extends JPanel implements ActionListener
          {
             //handleImageAnimation();
             
-            
+            //paintComponent();
             
             repaint();
          }
@@ -267,7 +267,7 @@ public class DisplayPanel extends JPanel implements ActionListener
       return imageIcons[SelectKartImageIndex(currentKart)];
    }
 
-   private void UpdateKartImages(RaceKart[] Karts)
+   public void UpdateKartImages(RaceKart[] Karts)
    {
       for(int i = 0; i < Karts.length; i++)
       {
