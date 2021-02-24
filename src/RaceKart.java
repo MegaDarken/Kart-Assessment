@@ -5,7 +5,7 @@ public class RaceKart implements Serializable
 {
    //Constants
    static final int DIRECTIONS = 16;
-   static final double PI_CARDINAL_RATIO = Math.PI*0.125;///8;
+   static final double PI_CARDINAL_RATIO = Math.PI*0.125;//PI/8 = TAU/16;
    
    static final int NORTH = 0;
    static final int NORTH_NORTH_EAST = 1;
@@ -33,6 +33,8 @@ public class RaceKart implements Serializable
    static final int DEFAULT_WEIGHT = 5;
    static final double DEFAULT_ACCELERATION = 0.5;
    static final double DEFAULT_TOP_SPEED = 5;
+   static final double DEFAULT_TURNING_SPEED = Math.PI*0.01;
+   
 
    private final int INPUT_KEY_MATRIX_SIZE = 4;
 
@@ -50,6 +52,7 @@ public class RaceKart implements Serializable
    private int weight;
    private double acceleration;// U/T/T
    private double top_speed;// U/T
+   private double turning_speed;
    
    //Attributes that should change
    private float xPosition;
@@ -61,12 +64,13 @@ public class RaceKart implements Serializable
    private float Bearing;
    
    
-   public RaceKart(String livery, int weight, double acceleration, double top_speed)
+   public RaceKart(String livery, int weight, double acceleration, double top_speed, double turning_speed)
    {
       this.livery = livery;
       this.weight = weight;
       this.acceleration = acceleration;
       this.top_speed = top_speed;
+      this.turning_speed = turning_speed;
       
       this.xPosition = 0;
       this.yPosition = 0;
@@ -81,6 +85,7 @@ public class RaceKart implements Serializable
       this.weight = DEFAULT_WEIGHT;
       this.acceleration = DEFAULT_ACCELERATION;
       this.top_speed = DEFAULT_TOP_SPEED;
+      this.turning_speed = DEFAULT_TURNING_SPEED;
       
       this.xPosition = 0;
       this.yPosition = 0;
@@ -98,14 +103,24 @@ public class RaceKart implements Serializable
    
    private void TickForwardAccelerate()
    {
-      this.xVelocity += (this.acceleration * Math.sin(this.Bearing));
-      this.yVelocity += (this.acceleration * Math.cos(this.Bearing));
+      this.xVelocity -= (this.acceleration * Math.sin(this.Bearing));
+      this.yVelocity -= (this.acceleration * Math.cos(this.Bearing));
    }
    
    private void TickForwardDecelerate()
    {
-      this.xVelocity -= (this.acceleration * Math.sin(this.Bearing));
-      this.yVelocity -= (this.acceleration * Math.cos(this.Bearing));
+      this.xVelocity += (this.acceleration * Math.sin(this.Bearing));
+      this.yVelocity += (this.acceleration * Math.cos(this.Bearing));
+   }
+   
+   private void TickForwardTurnLeft()
+   {
+      this.Bearing -= this.turning_speed;
+   }
+   
+   private void TickForwardTurnRight()
+   {
+      this.Bearing += this.turning_speed;
    }
    
    public void TickForward(byte[] controls)
