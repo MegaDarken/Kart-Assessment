@@ -169,6 +169,7 @@ public class DisplayPanel extends JPanel implements ActionListener
             AssessMode.world.MoveKarts();
             
             //paintComponent();
+            UpdateKartImages(AssessMode.world.GetKarts());
             
             repaint();
          }
