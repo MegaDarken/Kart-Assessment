@@ -139,11 +139,11 @@ public class RaceKart implements Serializable
          
          if (controls[INPUT_LEFT] > INPUT_OFF_VALUE)
          {
-            
+            TickForwardTurnLeft();
          }
          else if (controls[INPUT_RIGHT] > INPUT_OFF_VALUE)
          {
-            
+            TickForwardTurnRight();
          }
 
       }
