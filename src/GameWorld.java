@@ -55,6 +55,11 @@ public class GameWorld
       return this.clientKart;
    }
    
+   public RaceKart[] GetKarts()
+   {
+      return Karts;
+   }
+   
    public void SetClientKart(int value)
    {
       this.clientKart = value;
@@ -82,9 +87,5 @@ public class GameWorld
          
       }
       
-      if(!AssessMode.AsServer)
-      {
-         AssessMode.GetPanel().UpdateKartImages(Karts);
-      }
    }
 }
