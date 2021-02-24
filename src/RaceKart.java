@@ -5,7 +5,7 @@ public class RaceKart implements Serializable
 {
    //Constants
    static final int DIRECTIONS = 16;
-   static final double PI_CARDINAL_RATIO = Math.PI*0.125;//PI/8 = TAU/16;
+   static final double PI_CARDINAL_RATIO = 16/Math.PI;//
    
    static final int NORTH = 0;
    static final int NORTH_NORTH_EAST = 1;
@@ -185,9 +185,16 @@ public class RaceKart implements Serializable
    
    public int GetCardinalDirection()
    {
-      long cardinalValue = Math.round(Bearing * PI_CARDINAL_RATIO);
-   
-      int output = (int)(cardinalValue % DIRECTIONS);
+      this.Bearing = (float)((this.Bearing + Math.PI) % Math.PI);
+      double cardinalValue = (this.Bearing * PI_CARDINAL_RATIO);
+      
+      int output = (int)Math.round(cardinalValue);//(cardinalValue % DIRECTIONS);
+      output = ((output + DIRECTIONS) % DIRECTIONS);
+      
+      
+      //System.out.println(Bearing);
+      //System.out.println(cardinalValue);
+      //System.out.println(output);
       
       return output;
    }
