@@ -110,46 +110,12 @@ public class DisplayPanel extends JPanel implements ActionListener
         frameInputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, true), "stopRight");
         
         //Key press
-        frameActionMap.put("moveForwards", new AbstractAction()
-        {
-         @Override
-         public void actionPerformed(ActionEvent e)
-         {  
-            inputKeyMatrix[INPUT_FORWARD] = INPUT_ON_VALUE;
-            //actionForwards();
-            System.out.println("Press: Forwards");
-         }
-        });
+        frameActionMap.put("moveForwards", actionForwardsMove);
+        frameActionMap.put("moveBackwards", actionBackwardsMove);
         
-        frameActionMap.put("moveBackwards", new AbstractAction()
-        {
-         @Override
-         public void actionPerformed(ActionEvent e)
-         {  
-            inputKeyMatrix[INPUT_BACKWARD] = INPUT_ON_VALUE;
-            //actionBackwards();
-         }
-        });
+        frameActionMap.put("moveLeft", actionLeftMove);
         
-        frameActionMap.put("moveLeft", new AbstractAction()
-        {
-         @Override
-         public void actionPerformed(ActionEvent e)
-         {  
-            inputKeyMatrix[INPUT_LEFT] = INPUT_ON_VALUE;
-            //actionLeft();
-         }
-        });
-        
-        frameActionMap.put("moveRight", new AbstractAction()
-        {
-         @Override
-         public void actionPerformed(ActionEvent e)
-         {  
-            inputKeyMatrix[INPUT_RIGHT] = INPUT_ON_VALUE;
-            //actionRight();
-         }
-        });
+        frameActionMap.put("moveRight", actionRightMove);
         
         //Key Release
         frameActionMap.put("stopForwards", new AbstractAction()
@@ -212,25 +178,43 @@ public class DisplayPanel extends JPanel implements ActionListener
    
    
    // //Action Functions
-//    private void actionForwards()
-//    {
-//    
-//    }
-//    
-//    private void actionBackwards()
-//    {
-//    
-//    }
-//    
-//    private void actionLeft()
-//    {
-//    
-//    }
-//    
-//    private void actionRight()
-//    {
-//    
-//    }
+   Action actionForwardsMove = new AbstractAction()
+   {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {  
+         inputKeyMatrix[INPUT_FORWARD] = INPUT_ON_VALUE;
+         System.out.println("Press: Forwards");
+      }
+   };
+   
+   Action actionBackwardsMove = new AbstractAction()
+  {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {  
+         inputKeyMatrix[INPUT_BACKWARD] = INPUT_ON_VALUE;
+      }
+  };
+           
+   Action actionLeftMove = new AbstractAction()
+  {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {  
+         inputKeyMatrix[INPUT_LEFT] = INPUT_ON_VALUE;
+      }
+  };
+           
+   Action actionRightMove = new AbstractAction()
+  {
+      @Override
+      public void actionPerformed(ActionEvent e)
+      {  
+         inputKeyMatrix[INPUT_RIGHT] = INPUT_ON_VALUE;
+         //actionRight();
+      }
+  };
 
    //Loading
    private void LoadKartImages()
