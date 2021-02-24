@@ -108,6 +108,11 @@ public class RaceKart implements Serializable
    
    public void TickForward(byte[] controls)
    {
+      if (controls.length != INPUT_KEY_MATRIX_SIZE)
+      {
+         return;
+      }
+   
       //Accelerate/Decelerate based on controls
       if (controls[INPUT_FORWARD] > INPUT_OFF_VALUE)
       {
@@ -120,11 +125,11 @@ public class RaceKart implements Serializable
       
       if (controls[INPUT_LEFT] > INPUT_OFF_VALUE)
       {
-         TickForwardAccelerate();
+         
       }
       else if (controls[INPUT_RIGHT] > INPUT_OFF_VALUE)
       {
-         TickForwardDecelerate();
+         
       }
    
       TickForwardVelocity();
