@@ -34,8 +34,13 @@ public class RaceKart implements Serializable
    static final double DEFAULT_ACCELERATION = 0.5;
    static final double DEFAULT_TOP_SPEED = 5;
 
-
-   static final int CONTROLS_FWD_BWD = 0;
+   private final int INPUT_FORWARD = 0;
+   private final int INPUT_BACKWARD = 1;
+   private final int INPUT_LEFT = 2;
+   private final int INPUT_RIGHT = 3;
+   
+   private final byte INPUT_ON_VALUE = 127;
+   private final byte INPUT_OFF_VALUE = 0;
 
    //Attributes that should stay the same
    private String livery;
@@ -104,15 +109,23 @@ public class RaceKart implements Serializable
    public void TickForward(byte[] controls)
    {
       //Accelerate/Decelerate based on controls
-      if (controls[CONTROLS_FWD_BWD] > 0)
+      if (controls[INPUT_FORWARD] > INPUT_OFF_VALUE)
       {
          TickForwardAccelerate();
       }
-      else if (controls[CONTROLS_FWD_BWD] < 0)
+      else if (controls[INPUT_BACKWARD] > INPUT_OFF_VALUE)
       {
          TickForwardDecelerate();
       }
       
+      if (controls[INPUT_LEFT] > INPUT_OFF_VALUE)
+      {
+         TickForwardAccelerate();
+      }
+      else if (controls[INPUT_RIGHT] > INPUT_OFF_VALUE)
+      {
+         TickForwardDecelerate();
+      }
    
       TickForwardVelocity();
    }
