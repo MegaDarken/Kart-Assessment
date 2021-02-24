@@ -55,6 +55,13 @@ public class DisplayPanel extends JPanel implements ActionListener
    private JLabel[] imageLabels;
    private Timer timer;
    
+   //Getters and Setters
+   public byte[] GetInputKeyMatrix()
+   {
+      return inputKeyMatrix;
+   }
+   
+   
    //Constructor
    public DisplayPanel()
    {
@@ -110,6 +117,7 @@ public class DisplayPanel extends JPanel implements ActionListener
          {  
             inputKeyMatrix[INPUT_FORWARD] = INPUT_ON_VALUE;
             //actionForwards();
+            System.out.println("Press: Forwards");
          }
         });
         
@@ -150,6 +158,7 @@ public class DisplayPanel extends JPanel implements ActionListener
          public void actionPerformed(ActionEvent e)
          {  
             inputKeyMatrix[INPUT_FORWARD] = INPUT_OFF_VALUE;
+            System.out.println("Release: Forwards");
          }
         });
         
@@ -247,11 +256,11 @@ public class DisplayPanel extends JPanel implements ActionListener
          {
             index += (KART_DIRECTIONS);
          }
-         else if (currentKart.Livery().equals(IMAGE_LIVERY_GREEN))
+         else if (currentKart.Livery().equals(IMAGE_LIVERY_BLUE))
          {
             index += (KART_DIRECTIONS * 2);
          }
-         else if (currentKart.Livery().equals(IMAGE_LIVERY_GREEN))
+         else if (currentKart.Livery().equals(IMAGE_LIVERY_BOT))
          {
             index += (KART_DIRECTIONS * 3);
          }
