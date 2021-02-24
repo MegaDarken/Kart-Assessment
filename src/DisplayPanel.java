@@ -71,9 +71,9 @@ public class DisplayPanel extends JPanel implements ActionListener
         setLayout(null);//Disable Grid
         
         //Initalise Frame
-        frame = new JFrame();
-        frame.setBounds(windowStartingPositionX, windowStartingPositionY, windowStartingSizeX, windowStartingSizeY);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        //frame = new JFrame();
+        //frame.setBounds(windowStartingPositionX, windowStartingPositionY, windowStartingSizeX, windowStartingSizeY);
+        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
         //Initalize images
         imageIcons = new ImageIcon[MAXIMUM_IMAGE_ICONS];
@@ -93,11 +93,11 @@ public class DisplayPanel extends JPanel implements ActionListener
         //Keybinds
         inputKeyMatrix = new byte[INPUT_KEY_MATRIX_SIZE];
         
-        JPanel framePanel = (JPanel) frame.getContentPane();
+        //JPanel framePanel = (JPanel) frame.getContentPane();
         
-        InputMap frameInputMap = framePanel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        InputMap frameInputMap = this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         
-        ActionMap frameActionMap = framePanel.getActionMap();
+        ActionMap frameActionMap = this.getActionMap();
         
         frameInputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "moveForwards");//,InputEvent.SHIFT_MASK
         frameInputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "moveBackwards");
@@ -114,7 +114,6 @@ public class DisplayPanel extends JPanel implements ActionListener
         frameActionMap.put("moveBackwards", actionBackwardsMove);
         
         frameActionMap.put("moveLeft", actionLeftMove);
-        
         frameActionMap.put("moveRight", actionRightMove);
         
         //Key Release
@@ -124,7 +123,7 @@ public class DisplayPanel extends JPanel implements ActionListener
          public void actionPerformed(ActionEvent e)
          {  
             inputKeyMatrix[INPUT_FORWARD] = INPUT_OFF_VALUE;
-            System.out.println("Release: Forwards");
+            //System.out.println("Release: Forwards");
          }
         });
         
@@ -184,7 +183,7 @@ public class DisplayPanel extends JPanel implements ActionListener
       public void actionPerformed(ActionEvent e)
       {  
          inputKeyMatrix[INPUT_FORWARD] = INPUT_ON_VALUE;
-         System.out.println("Press: Forwards");
+         //System.out.println("Press: Forwards");
       }
    };
    
