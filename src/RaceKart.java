@@ -34,6 +34,8 @@ public class RaceKart implements Serializable
    static final double DEFAULT_ACCELERATION = 0.5;
    static final double DEFAULT_TOP_SPEED = 5;
 
+   private final int INPUT_KEY_MATRIX_SIZE = 4;
+
    private final int INPUT_FORWARD = 0;
    private final int INPUT_BACKWARD = 1;
    private final int INPUT_LEFT = 2;
@@ -108,30 +110,30 @@ public class RaceKart implements Serializable
    
    public void TickForward(byte[] controls)
    {
-      if (controls.length != INPUT_KEY_MATRIX_SIZE)
+      if (controls.length == INPUT_KEY_MATRIX_SIZE)
       {
-         return;
+         //Accelerate/Decelerate based on controls
+         if (controls[INPUT_FORWARD] > INPUT_OFF_VALUE)
+         {
+            TickForwardAccelerate();
+         }
+         else if (controls[INPUT_BACKWARD] > INPUT_OFF_VALUE)
+         {
+            TickForwardDecelerate();
+         }
+         
+         if (controls[INPUT_LEFT] > INPUT_OFF_VALUE)
+         {
+            
+         }
+         else if (controls[INPUT_RIGHT] > INPUT_OFF_VALUE)
+         {
+            
+         }
+
       }
    
-      //Accelerate/Decelerate based on controls
-      if (controls[INPUT_FORWARD] > INPUT_OFF_VALUE)
-      {
-         TickForwardAccelerate();
-      }
-      else if (controls[INPUT_BACKWARD] > INPUT_OFF_VALUE)
-      {
-         TickForwardDecelerate();
-      }
-      
-      if (controls[INPUT_LEFT] > INPUT_OFF_VALUE)
-      {
          
-      }
-      else if (controls[INPUT_RIGHT] > INPUT_OFF_VALUE)
-      {
-         
-      }
-   
       TickForwardVelocity();
    }
    
