@@ -6,6 +6,7 @@ public class RaceKart implements Serializable
    //Constants
    static final int DIRECTIONS = 16;
    static final double PI_CARDINAL_RATIO = 16/Math.PI;//
+   static final double QUARTER_PI = Math.PI*0.5;
    
    static final int NORTH = 0;
    static final int NORTH_NORTH_EAST = 1;
@@ -53,6 +54,7 @@ public class RaceKart implements Serializable
    private double acceleration;// U/T/T
    private double top_speed;// U/T
    private double turning_speed;
+   
    
    //Attributes that should change
    private float xPosition;
@@ -103,14 +105,14 @@ public class RaceKart implements Serializable
    
    private void TickForwardAccelerate()
    {
-      this.xVelocity -= (this.acceleration * Math.sin(this.Bearing));
-      this.yVelocity -= (this.acceleration * Math.cos(this.Bearing));
+      this.xVelocity += (this.acceleration * Math.cos(this.Bearing));
+      this.yVelocity += (this.acceleration * Math.sin(this.Bearing));
    }
    
    private void TickForwardDecelerate()
    {
-      this.xVelocity += (this.acceleration * Math.sin(this.Bearing));
-      this.yVelocity += (this.acceleration * Math.cos(this.Bearing));
+      this.xVelocity -= (this.acceleration * Math.cos(this.Bearing));
+      this.yVelocity -= (this.acceleration * Math.sin(this.Bearing));
    }
    
    private void TickForwardTurnLeft()
