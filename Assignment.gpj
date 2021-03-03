@@ -17,7 +17,7 @@ s#n0classes
 s#p0doc
 s#q0test
 s#w0canvas
-!196;g
+!223;g
 %\011src%sDisplayPanel.java
 %\011src%sPacketHandling.java
 %\011src%sRaceKart.java
@@ -25,7 +25,8 @@ s#w0canvas
 %\011src%sNetworkConnection.java
 %\011src%sGameWorld.java
 %\011src%sAssessMode.java
-!196;f
+%\011src%sClientFrame.java
+!223;f
 %\011src%sDisplayPanel.java
 %\011src%sPacketHandling.java
 %\011src%sRaceKart.java
@@ -33,3 +34,4 @@ s#w0canvas
 %\011src%sNetworkConnection.java
 %\011src%sGameWorld.java
 %\011src%sAssessMode.java
+%\011src%sClientFrame.java
