@@ -189,6 +189,7 @@ public class RaceKart implements Serializable
    {
       this.Bearing = (float)((this.Bearing + Math.PI) % Math.PI);
       double cardinalValue = (this.Bearing * PI_CARDINAL_RATIO);
+      cardinalValue = (cardinalValue - 0.5);
       
       int output = (int)Math.round(cardinalValue);//(cardinalValue % DIRECTIONS);
       output = ((output + DIRECTIONS) % DIRECTIONS);
