@@ -4,7 +4,7 @@ import java.util.concurrent.*;
 public class ThreadHandling
 {
 
-   private final int THREAD_COUNT = 3;
+   private final static int THREAD_COUNT = 3;
 
    public static void OpenThreads()
    {
@@ -23,4 +23,4 @@ public class ThreadHandling
 
 
 
-{
+}
