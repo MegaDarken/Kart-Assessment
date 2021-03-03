@@ -72,7 +72,7 @@ public class GameWorld
       {
          if (kart == clientKart)
          {
-            controls[kart] = AssessMode.GetPanel().GetInputKeyMatrix();
+            controls[kart] = AssessMode.GetFrame().GetPanel().GetInputKeyMatrix();
          }
       
          
