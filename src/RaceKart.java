@@ -33,9 +33,9 @@ public class RaceKart implements Serializable
    static final String DEFAULT_LIVERY = "Bot";
    static final int DEFAULT_WEIGHT = 5;
    static final double DEFAULT_ACCELERATION = 0.5;
-   static final double DEFAULT_TOP_SPEED = 5;
+   static final double DEFAULT_TOP_SPEED = 50;
    static final double DEFAULT_TURNING_SPEED = Math.PI*0.01;
-   
+   static final double DEFAULT_FRICTION = 0.5;
 
    private final int INPUT_KEY_MATRIX_SIZE = 4;
 
@@ -53,8 +53,8 @@ public class RaceKart implements Serializable
    private int weight;
    private double acceleration;// U/T/T
    private double top_speed;// U/T
-   private double turning_speed;
-   
+   private double turning_speed;//Rad/T
+   private double friction;//U/T/T
    
    //Attributes that should change
    private float xPosition;
@@ -74,6 +74,8 @@ public class RaceKart implements Serializable
       this.top_speed = top_speed;
       this.turning_speed = turning_speed;
       
+      this.friction = DEFAULT_FRICTION;
+      
       this.xPosition = 0;
       this.yPosition = 0;
       
@@ -88,6 +90,8 @@ public class RaceKart implements Serializable
       this.acceleration = DEFAULT_ACCELERATION;
       this.top_speed = DEFAULT_TOP_SPEED;
       this.turning_speed = DEFAULT_TURNING_SPEED;
+      
+      this.friction = DEFAULT_FRICTION;
       
       this.xPosition = 0;
       this.yPosition = 0;
@@ -125,6 +129,38 @@ public class RaceKart implements Serializable
       this.Bearing += this.turning_speed;
    }
    
+   private void TickForwardFriction()
+   {
+      double xfriction = this.friction;
+      double yfriction = this.friction;
+   
+      xfriction += (this.acceleration * (Math.abs(xVelocity)/top_speed));
+      yfriction += (this.acceleration * (Math.abs(yVelocity)/top_speed));
+   
+      if (Math.abs(this.xVelocity) < xfriction)
+      {
+         xfriction = Math.abs(xVelocity);
+      }
+      
+      if (Math.abs(this.yVelocity) < yfriction)
+      {
+         yfriction = Math.abs(yVelocity);
+      }
+   
+      if (this.xVelocity < 0)
+      {
+         xfriction = -xfriction;
+      }
+      
+      if (this.yVelocity < 0)
+      {
+         yfriction = -yfriction;
+      }
+      
+      this.xVelocity -= (xfriction);
+      this.yVelocity -= (yfriction);
+   }
+   
    public void TickForward(byte[] controls)
    {
       if (controls.length == INPUT_KEY_MATRIX_SIZE)
@@ -152,6 +188,8 @@ public class RaceKart implements Serializable
    
          
       TickForwardVelocity();
+      
+      TickForwardFriction();
    }
    
    public float X()
