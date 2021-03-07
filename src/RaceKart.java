@@ -5,8 +5,10 @@ public class RaceKart implements Serializable
 {
    //Constants
    static final int DIRECTIONS = 16;
-   static final double PI_CARDINAL_RATIO = 16/Math.PI;//
+   static final double TAU = Math.PI*2;
+   static final double PI_CARDINAL_RATIO = DIRECTIONS/TAU;//
    static final double QUARTER_PI = Math.PI*0.5;
+   
    
    static final int NORTH = 0;
    static final int NORTH_NORTH_EAST = 1;
@@ -109,14 +111,18 @@ public class RaceKart implements Serializable
    
    private void TickForwardAccelerate()
    {
-      this.xVelocity += (this.acceleration * Math.cos(this.Bearing));
-      this.yVelocity += (this.acceleration * Math.sin(this.Bearing));
+      System.out.println(Bearing);
+   
+      this.xVelocity += (this.acceleration * Math.sin(this.Bearing));
+      this.yVelocity -= (this.acceleration * Math.cos(this.Bearing));
    }
    
    private void TickForwardDecelerate()
    {
-      this.xVelocity -= (this.acceleration * Math.cos(this.Bearing));
-      this.yVelocity -= (this.acceleration * Math.sin(this.Bearing));
+      System.out.println(Bearing);
+   
+      this.xVelocity -= (this.acceleration * Math.sin(this.Bearing));
+      this.yVelocity += (this.acceleration * Math.cos(this.Bearing));
    }
    
    private void TickForwardTurnLeft()
@@ -225,9 +231,9 @@ public class RaceKart implements Serializable
    
    public int GetCardinalDirection()
    {
-      this.Bearing = (float)((this.Bearing + Math.PI) % Math.PI);
+      this.Bearing = (float)((this.Bearing + TAU) % TAU);
       double cardinalValue = (this.Bearing * PI_CARDINAL_RATIO);
-      cardinalValue = (cardinalValue - 0.5);
+      //cardinalValue = (cardinalValue - 0.5);
       
       int output = (int)Math.round(cardinalValue);//(cardinalValue % DIRECTIONS);
       output = ((output + DIRECTIONS) % DIRECTIONS);
