@@ -1,7 +1,7 @@
 //File: GameWorld.java
+import java.lang.*;
 
-
-public class GameWorld
+public class GameWorld implements Runnable
 {
    //Constants
    private final int MAXIMUM_RACEKARTS = 4;
@@ -88,4 +88,13 @@ public class GameWorld
       }
       
    }
+   
+   
+   public void run()
+   {
+      MoveKarts();
+      
+      
+   }
+   
 }
