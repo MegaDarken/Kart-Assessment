@@ -166,7 +166,8 @@ public class DisplayPanel extends JPanel implements ActionListener
          if(e.getSource() == timer)
          {
             //handleImageAnimation();
-            AssessMode.world.MoveKarts();
+            Thread worldThread = new Thread(AssessMode.world);
+            worldThread.start();//AssessMode.world.MoveKarts();
             
             //paintComponent();
             UpdateKartImages(AssessMode.world.GetKarts());
@@ -249,7 +250,7 @@ public class DisplayPanel extends JPanel implements ActionListener
             index += (KART_DIRECTIONS * 3);
          }
          
-         
+         //System.out.println(index);
          return index;
       }
       
