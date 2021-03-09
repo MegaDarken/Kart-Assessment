@@ -17,7 +17,8 @@ s#n0classes
 s#p0doc
 s#q0test
 s#w0canvas
-!223;g
+!250;g
+%\011src%sGUIHandling.java
 %\011src%sDisplayPanel.java
 %\011src%sPacketHandling.java
 %\011src%sRaceKart.java
@@ -26,7 +27,8 @@ s#w0canvas
 %\011src%sGameWorld.java
 %\011src%sAssessMode.java
 %\011src%sClientFrame.java
-!223;f
+!250;f
+%\011src%sGUIHandling.java
 %\011src%sDisplayPanel.java
 %\011src%sPacketHandling.java
 %\011src%sRaceKart.java
