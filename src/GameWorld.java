@@ -18,15 +18,8 @@ public class GameWorld implements Runnable
    
    public GameWorld()
    {
-      if (AssessMode.AsServer)
-      {
-         //No kart
-         clientKart = -1;
-      }
-      else if (!AssessMode.AsServer)
-      {
-         //Fetch client kart from server
-      }
+      //Fetch client kart from server
+      
       
       Karts = new RaceKart[MAXIMUM_RACEKARTS];
       controls = new byte[MAXIMUM_RACEKARTS][INPUT_KEY_MATRIX_SIZE];
