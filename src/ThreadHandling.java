@@ -19,6 +19,7 @@ public class ThreadHandling
       //threadExecutor.execute(graphicsThread);
       //threadExecutor.execute(connectionThread);
 
+      threadExecutor.shutdown();
    }
 
 
