@@ -4,8 +4,8 @@ import java.io.*;
 
 public class PacketHandling 
 {
-   static final int SERVER_PORT = 25610;
-   static final int SERVER_MAX_CONNECTIONS = 8;
+   //static final int SERVER_PORT = 25610;
+   //static final int SERVER_MAX_CONNECTIONS = 8;
    
    static final int MAX_CONNECTIONS = 1;
    
@@ -19,9 +19,10 @@ public class PacketHandling
    
    private DatagramPacket currentPacket;
    
-   private InetAddress[] connectionAddress;
-   private int[] connectionPort;
+   //private InetAddress[] connectionAddress;
+   //private int[] connectionPort;
    
+   private NetworkConnection serverConnection;
    
    public PacketHandling()
    {
@@ -33,8 +34,8 @@ public class PacketHandling
       
          socket = new DatagramSocket();
          
-         connectionAddress = new InetAddress[MAX_CONNECTIONS];
-         connectionPort = new int[MAX_CONNECTIONS];
+         //connectionAddress = new InetAddress[MAX_CONNECTIONS];
+         //connectionPort = new int[MAX_CONNECTIONS];
          
          
          socket.setSoTimeout(SOCKET_TIMEOUT); //In ms
@@ -51,6 +52,7 @@ public class PacketHandling
       
    }
    
+   /*
    private void addConnection(InetAddress newAddress, int newPort)
    {
       for (int i = 0; i < SERVER_MAX_CONNECTIONS; i++)
@@ -221,7 +223,7 @@ public class PacketHandling
       
       return null;
    }
-   
+   */
    
    public void CheckConnections()
    {
@@ -256,6 +258,7 @@ public class PacketHandling
       }*/
    }
    
+   /*
    public void ProcessPacket()
    {
       byte[] data = ReceivePacket();
@@ -273,4 +276,5 @@ public class PacketHandling
             break;
       }
    }
+   */
 }
