@@ -36,7 +36,7 @@ public class RaceKart implements Serializable
    static final int DEFAULT_WEIGHT = 5;
    static final double DEFAULT_ACCELERATION = 0.5;
    static final double DEFAULT_TOP_SPEED = 50;
-   static final double DEFAULT_TURNING_SPEED = Math.PI*0.01;
+   static final double DEFAULT_TURNING_SPEED = Math.PI*0.05;
    static final double DEFAULT_FRICTION = 0.5;
 
    private final int INPUT_KEY_MATRIX_SIZE = 4;
@@ -111,7 +111,7 @@ public class RaceKart implements Serializable
    
    private void TickForwardAccelerate()
    {
-      System.out.println(Bearing);
+      //System.out.println(Bearing);
    
       this.xVelocity += (this.acceleration * Math.sin(this.Bearing));
       this.yVelocity -= (this.acceleration * Math.cos(this.Bearing));
@@ -119,7 +119,7 @@ public class RaceKart implements Serializable
    
    private void TickForwardDecelerate()
    {
-      System.out.println(Bearing);
+      //System.out.println(Bearing);
    
       this.xVelocity -= (this.acceleration * Math.sin(this.Bearing));
       this.yVelocity += (this.acceleration * Math.cos(this.Bearing));
