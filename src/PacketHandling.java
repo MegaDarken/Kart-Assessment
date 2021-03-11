@@ -14,7 +14,6 @@ public class PacketHandling
    static final byte RESPONCE_STRING = (byte)'R';//"Received";
    static final byte REQUEST_VERIFY_STRING = (byte)'V';//"Verify Existance";
    
-   private boolean isServer;
    
    private DatagramSocket socket;
    
@@ -24,30 +23,21 @@ public class PacketHandling
    private int[] connectionPort;
    
    
-   public PacketHandling(boolean isServer)
+   public PacketHandling()
    {
-      this.isServer = isServer;
+      
    
       try
 	  	{
       
-      //Based on 
-      if (isServer)
-      {
-         socket = new DatagramSocket(SERVER_PORT);
-         
-         connectionAddress = new InetAddress[SERVER_MAX_CONNECTIONS];
-         connectionPort = new int[SERVER_MAX_CONNECTIONS];
-      }
-      else
-      {
+      
          socket = new DatagramSocket();
          
          connectionAddress = new InetAddress[MAX_CONNECTIONS];
          connectionPort = new int[MAX_CONNECTIONS];
-      }
-      
-      socket.setSoTimeout(SOCKET_TIMEOUT); //In ms
+         
+         
+         socket.setSoTimeout(SOCKET_TIMEOUT); //In ms
       
       }
 		//catch( UnknownHostException e )
@@ -235,6 +225,7 @@ public class PacketHandling
    
    public void CheckConnections()
    {
+      /*
       if (this.isServer)
       {
          //For each client
@@ -262,7 +253,7 @@ public class PacketHandling
             
             //Go into Timeout mode
          }
-      }
+      }*/
    }
    
    public void ProcessPacket()
