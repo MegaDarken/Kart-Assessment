@@ -4,7 +4,7 @@ import java.io.*;
 
 public class PacketHandling 
 {
-   //static final int SERVER_PORT = 25610;
+   static final int DEFAULT_SERVER_PORT = 25610;
    //static final int SERVER_MAX_CONNECTIONS = 8;
    
    static final int MAX_CONNECTIONS = 1;
@@ -22,12 +22,25 @@ public class PacketHandling
    //private InetAddress[] connectionAddress;
    //private int[] connectionPort;
    
+   private InetAddress serverAddress;
+   private int serverPort;
+   
    private NetworkConnection serverConnection;
    
-   public PacketHandling()
+   public PacketHandling(InetAddress serverAddress, int serverPort)
    {
+      this.serverAddress = serverAddress;
+      this.serverPort = serverPort;
       
+      serverConnection = new NetworkConnection(this.serverAddress, this.serverPort);
+   }
    
+   public PacketHandling(InetAddress serverAddress)
+   {
+      this.serverAddress = serverAddress;
+      this.serverPort = DEFAULT_SERVER_PORT;
+      
+      /*
       try
 	  	{
       
@@ -49,6 +62,9 @@ public class PacketHandling
 		{
 			System.err.println ("IOException: " + e );
 		}
+      */
+      //Create Connection
+      serverConnection = new NetworkConnection(this.serverAddress, this.serverPort);
       
    }
    
