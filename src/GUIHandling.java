@@ -14,7 +14,7 @@ class GUIHandling implements Runnable
    //Image(s)
    private final String IMAGE_DIRECTORY = "./Graphics/";
    private final String IMAGE_KART_FILENAME = "Kart";
-   private final String IMAGE_FILE_EXTENSION = ".jpg";
+   private final String IMAGE_FILE_EXTENSION = ".png";
    
    private final String IMAGE_LIVERY_RED = "Red";
    private final String IMAGE_LIVERY_GREEN = "Green";
