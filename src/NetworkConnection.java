@@ -63,7 +63,7 @@ class NetworkConnection implements Runnable
          );
          
          inputObject = new ObjectInputStream(
-            server.getInputStream()
+            clientSocket.getInputStream()
          );
 		} 
 		catch (UnknownHostException e)
@@ -156,4 +156,138 @@ class NetworkConnection implements Runnable
       this.hostPort = hostPort;
    }
    
+   //REQUEST HANDLING
+   
+   private void sendRequest()
+   {
+      if (
+         clientSocket != null && 
+         outputStream != null && 
+         inputStream != null &&
+         outputObject != null &&
+         inputObject != null
+      ) {
+         try
+			{
+         /*
+            // setup serializable object - this would normally be done somewhere
+            //    where the object can be easily used by the client, not just
+            //    before sending it through the socket
+            Kart kart = new Kart( "Kart1" );
+            
+            // write object to stream
+            output.writeObject( kart );
+            
+            // send it
+            output.flush();
+            */
+            
+            do 
+            {
+               System.out.print("CLIENT: ");
+               request = scanner.nextLine(); 
+
+				   outputStream.writeBytes( request + "\n" );
+            
+   				if((responseLine = inputStream.readLine()) != null)
+   				{
+   					System.out.println("SERVER: " + responseLine);
+   				}
+               
+               if ( request.equals("CLOSE") )
+               {
+                  break;
+               }
+               
+               try
+               {
+                  Thread.sleep(10);
+               }
+               catch(Exception e)
+               {
+                  System.out.print("Exception thrown for Thread.sleep: " + e);
+               }
+               
+            } while(true);
+            
+								
+				// close the input/output streams and socket
+				outputStream.close();
+				inputStream.close();
+				clientSocket.close();
+			}
+			catch (UnknownHostException e)
+			{
+				System.err.println("Trying to connect to unknown host: " + e);
+			}
+			catch (IOException e)
+			{
+				System.err.println("IOException:  " + e);
+			}
+
+      }
+   }
+   
+   private void receiveRequest()
+   {
+      if (
+         clientSocket != null && 
+         outputStream != null && 
+         inputStream != null &&
+         outputObject != null &&
+         inputObject != null
+      ) {
+            
+         try 
+         {
+            /*
+               // get object and cast it to a Kart (serializable class)
+               Kart kart = (Kart) inputObject.readObject();
+               
+               // test out the kart
+               System.out.println( "Kart name: " + kart.getName() );
+            } catch (ClassNotFoundException e) 
+            {
+               
+            }
+            */
+            //Connection Loop
+            do
+            {
+      			if((line = inputStream.readLine()) != null)
+      			{
+      				
+                  
+                  
+                  outputStream.writeBytes( line + "\n" );
+      			}
+               
+               if ( line.equals("CLOSE") )
+               {
+                  break;
+               }
+               
+               try
+               {
+                  //Thread.sleep(1);
+               }
+               catch(Exception e)
+               {
+                  System.out.print("Exception thrown for Thread.sleep: " + e);
+               }
+   
+            } while(true);
+            
+   			
+   			// Comment out/remove the outputStream and server close statements if server should remain live
+   			outputStream.close();
+   			inputStream.close();
+            
+         }
+         catch (Exception e)
+         {
+            System.out.print("Exception thown." + e);
+         }
+      }
+   }
 }
