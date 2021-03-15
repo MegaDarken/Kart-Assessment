@@ -58,6 +58,11 @@ public class GameWorld implements Runnable
       this.clientKart = value;
    }
    
+   public byte[][] GetControls()
+   {
+      return this.controls;
+   }
+   
    public void MoveKarts()
    {
       //For each kart in GameWorld
