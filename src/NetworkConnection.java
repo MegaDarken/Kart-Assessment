@@ -8,8 +8,8 @@ import java.util.*;
 class NetworkConnection implements Runnable
 {
    //Const
-   //private final String REQUEST_CONTROL = "control";
-   //private final String REQUEST_KART = "kart";
+   private final String REQUEST_CONTROL = "control";
+   private final String REQUEST_KART = "kart";
    
 
    //Attribute(s)
@@ -22,6 +22,7 @@ class NetworkConnection implements Runnable
    private Socket clientSocket = null;
    private DataOutputStream outputStream = null;
    private String request;
+   private int index;
    private BufferedReader inputStream = null;
 	private String responseLine;
       
@@ -186,6 +187,7 @@ class NetworkConnection implements Runnable
             {
                System.out.print("CLIENT: ");
                request = scanner.nextLine(); 
+               //index = scanner.nextLine();
 
 				   outputStream.writeBytes( request + "\n" );
             
@@ -197,6 +199,24 @@ class NetworkConnection implements Runnable
                if ( request.equals("CLOSE") )
                {
                   break;
+               }
+               
+               switch(request)
+               {
+                  case REQUEST_CONTROL:
+                     
+                     //Get object
+                     byte[] currentControl = (byte[]) inputObject.readObject();
+                     
+                     break;
+                  
+                  case REQUEST_KART:
+                     
+                     //Get object
+                     RaceKart currentKart = (RaceKart) inputObject.readObject();
+                     
+                     break;
+               
                }
                
                try
@@ -216,6 +236,10 @@ class NetworkConnection implements Runnable
 				inputStream.close();
 				clientSocket.close();
 			}
+         catch (ClassNotFoundException e)
+         {
+            System.err.println("Class not found: " + e);
+         }
 			catch (UnknownHostException e)
 			{
 				System.err.println("Trying to connect to unknown host: " + e);
@@ -237,6 +261,8 @@ class NetworkConnection implements Runnable
          outputObject != null &&
          inputObject != null
       ) {
+      
+      String line = "";
             
          try 
          {
@@ -257,8 +283,6 @@ class NetworkConnection implements Runnable
       			if((line = inputStream.readLine()) != null)
       			{
       				
-                  
-                  
                   outputStream.writeBytes( line + "\n" );
       			}
                
@@ -266,6 +290,28 @@ class NetworkConnection implements Runnable
                {
                   break;
                }
+               
+               //Split line into parts
+               
+               
+               switch(request)
+               {
+                  case REQUEST_CONTROL:
+                     
+                     //Get object
+                     byte[] currentControl = (byte[]) inputObject.readObject();
+                     
+                     break;
+                  
+                  case REQUEST_KART:
+                     
+                     //Get object
+                     RaceKart currentKart = (RaceKart) inputObject.readObject();
+                     
+                     break;
+               
+               }
+
                
                try
                {
