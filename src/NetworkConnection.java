@@ -7,6 +7,13 @@ import java.util.*;
 
 class NetworkConnection implements Runnable
 {
+   //Const
+   //private final String REQUEST_CONTROL = "control";
+   //private final String REQUEST_KART = "kart";
+   
+
+   //Attribute(s)
+
    private InetAddress hostAddress;
    private int hostPort;
    
@@ -18,8 +25,8 @@ class NetworkConnection implements Runnable
    private BufferedReader inputStream = null;
 	private String responseLine;
       
-   private ObjectOutput output = null;
-   
+   private ObjectOutput outputObject = null;
+   private ObjectInput inputObject = null;
    
    public NetworkConnection(InetAddress hostAddress, int hostPort)
    {
@@ -51,8 +58,12 @@ class NetworkConnection implements Runnable
 				)
 			);
          
-         output = new ObjectOutputStream(
+         outputObject = new ObjectOutputStream(
             clientSocket.getOutputStream()
+         );
+         
+         inputObject = new ObjectInputStream(
+            server.getInputStream()
          );
 		} 
 		catch (UnknownHostException e)
@@ -72,7 +83,8 @@ class NetworkConnection implements Runnable
          clientSocket != null && 
          outputStream != null && 
          inputStream != null &&
-         output != null
+         outputObject != null &&
+         inputObject != null
       ) {
 			try
 			{
