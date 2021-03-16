@@ -149,6 +149,7 @@ public class DisplayPanel extends JPanel implements ActionListener
       
          if(e.getSource() == timer)
          {
+            
             //handleImageAnimation();
             Thread worldThread = new Thread(AssessMode.world);
                        
@@ -203,6 +204,30 @@ public class DisplayPanel extends JPanel implements ActionListener
       }
   };
 
+     public void paintComponent(Graphics g)
+  {
+   Color c1 = Color.green;
+   Color c2 = Color.black;
+   Color c3 = Color.yellow;
+   Color c4 = Color.white;
    
+   g.setColor( c1 );
+   g.fillRect( 0, 0, 850, 650 ); // grass
+   
+   g.setColor( c2 );
+   g.fillRect(50, 100, 750, 500);  // outer edge
+   //g.drawRect(150, 200, 550, 300); // inner edge
+   
+   g.setColor( c1 );
+   g.fillRect( 150, 200, 550, 300 ); // grass
+   
+   g.setColor( c3 );
+   g.drawRect( 100, 150, 650, 400 ); // mid-lane marker
+   
+   g.setColor( c4 );
+   g.drawLine( 425, 500, 425, 600 ); // start line
+   
+   
+  }
 
 }
