@@ -12,8 +12,8 @@ public class ClientFrame extends JFrame
    static final int WINDOW_X_START = 100;
    static final int WINDOW_Y_START = 100;
    
-   static final int WINDOW_WIDTH = 500;
-   static final int WINDOW_HEIGHT = 500;
+   static final int WINDOW_WIDTH = 850;
+   static final int WINDOW_HEIGHT = 650;
    
    //Vars
    private DisplayPanel panel;
