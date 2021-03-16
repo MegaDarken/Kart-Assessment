@@ -300,15 +300,24 @@ class NetworkConnection implements Runnable
                   case REQUEST_CONTROL:
                      
                      //Get object
-                     //byte[] currentControl = (byte[]) inputObject.readObject();
                      
+                     // write object to stream
+                     outputObject.writeObject(AssessMode.world.GetControls()[index]);
+            
+                     // send it
+                     outputObject.flush();
                      break;
                   
                   case REQUEST_KART:
                      
                      //Get object
-                     //RaceKart currentKart = (RaceKart) inputObject.readObject();
+                     AssessMode.world.GetKarts()[index]//RaceKart currentKart = (RaceKart) inputObject.readObject();
                      
+                     // write object to stream
+                     outputObject.writeObject(AssessMode.world.GetKarts()[index]);
+            
+                     // send it
+                     outputObject.flush();
                      break;
                
                }
