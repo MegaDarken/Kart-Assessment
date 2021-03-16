@@ -189,7 +189,7 @@ class NetworkConnection implements Runnable
                request = scanner.nextLine(); 
                //index = scanner.nextLine();
 
-				   outputStream.writeBytes( request + "\n" );
+				   outputStream.writeBytes( request + index + "\n" );
             
    				if((responseLine = inputStream.readLine()) != null)
    				{
@@ -207,14 +207,14 @@ class NetworkConnection implements Runnable
                      
                      //Get object
                      byte[] currentControl = (byte[]) inputObject.readObject();
-                     
+                     AssessMode.world.GetControls()[index] = currentControl;
                      break;
                   
                   case REQUEST_KART:
                      
                      //Get object
                      RaceKart currentKart = (RaceKart) inputObject.readObject();
-                     
+                     AssessMode.world.GetKarts()[index] = currentKart;
                      break;
                
                }
@@ -292,21 +292,22 @@ class NetworkConnection implements Runnable
                }
                
                //Split line into parts
-               
+               String[] splitLine = line.split(" ")
+               int currentIndex = 
                
                switch(request)
                {
                   case REQUEST_CONTROL:
                      
                      //Get object
-                     byte[] currentControl = (byte[]) inputObject.readObject();
+                     //byte[] currentControl = (byte[]) inputObject.readObject();
                      
                      break;
                   
                   case REQUEST_KART:
                      
                      //Get object
-                     RaceKart currentKart = (RaceKart) inputObject.readObject();
+                     //RaceKart currentKart = (RaceKart) inputObject.readObject();
                      
                      break;
                
