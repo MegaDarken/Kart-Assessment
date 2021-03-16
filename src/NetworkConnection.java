@@ -292,8 +292,11 @@ class NetworkConnection implements Runnable
                }
                
                //Split line into parts
-               String[] splitLine = line.split(" ")
-               int currentIndex = 
+               String[] splitLine = line.split(" ");
+               
+               //Check length
+               request = splitLine[0];
+               int currentIndex = Integer.parseInt(splitLine[1]);
                
                switch(request)
                {
@@ -311,7 +314,7 @@ class NetworkConnection implements Runnable
                   case REQUEST_KART:
                      
                      //Get object
-                     AssessMode.world.GetKarts()[index]//RaceKart currentKart = (RaceKart) inputObject.readObject();
+                     //AssessMode.world.GetKarts()[index];//RaceKart currentKart = (RaceKart) inputObject.readObject();
                      
                      // write object to stream
                      outputObject.writeObject(AssessMode.world.GetKarts()[index]);
