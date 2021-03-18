@@ -58,6 +58,9 @@ public class RaceKart implements Serializable
    private double turning_speed;//Rad/T
    private double friction;//U/T/T
    
+   private int carLength;
+   private int carWidth;
+   
    //Attributes that should change
    private float xPosition;
    private float yPosition;
@@ -68,7 +71,7 @@ public class RaceKart implements Serializable
    private float Bearing;
    
    
-   public RaceKart(String livery, int weight, double acceleration, double top_speed, double turning_speed)
+   public RaceKart(String livery, int weight, double acceleration, double top_speed, double turning_speed, int carWidth, int carLength)
    {
       this.livery = livery;
       this.weight = weight;
@@ -77,6 +80,9 @@ public class RaceKart implements Serializable
       this.turning_speed = turning_speed;
       
       this.friction = DEFAULT_FRICTION;
+      
+      this.carLength = carLength;
+      this.carWidth = carWidth;
       
       this.xPosition = 0;
       this.yPosition = 0;
