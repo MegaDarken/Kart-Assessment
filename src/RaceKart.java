@@ -255,7 +255,7 @@ public class RaceKart implements Serializable
    
    public boolean WithinBounding(int x, int y)
    {
-      boolean found = false;
+      boolean found = true;
       
       //Trig effect
       /*
@@ -299,6 +299,17 @@ public class RaceKart implements Serializable
       xRelitive = distance * sineValue;
       yRelitive = distance * cosineValue;
       
+      //Within bounding?
+      found = (found && xRelitive < this.carWidth);
+      found = (found && yRelitive < this.carLength);
+      
+      if (found)
+      {
+         found = (found && xRelitive > -this.carWidth);
+         found = (found && yRelitive > -this.carLength);
+      }
+      
+         
      
       //float lineA = 
       /*(((xRelitive - xBoundingUpper) * (yBoundingLower - yBoundingUpper))
