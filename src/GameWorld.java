@@ -30,16 +30,16 @@ public class GameWorld implements Runnable
 //       }
       
       //Debug
-      Karts[0] = new RaceKart("Red", 1, 1, 50, Math.PI*0.05);
+      Karts[0] = new RaceKart("Red", 1, 1, 50, Math.PI*0.05, 10, 20);
       Karts[0].SetPosition(10, 10);
       
-      Karts[1] = new RaceKart("Green", 1, 1, 50, Math.PI*0.05);
+      Karts[1] = new RaceKart("Green", 1, 1, 50, Math.PI*0.05, 10, 20);
       Karts[1].SetPosition(110, 10);
       
-      Karts[2] = new RaceKart("Blue", 1, 1, 50, Math.PI*0.05);
+      Karts[2] = new RaceKart("Blue", 1, 1, 50, Math.PI*0.05, 10, 20);
       Karts[2].SetPosition(10, 110);
       
-      Karts[3] = new RaceKart("Bot", 1, 1, 50, Math.PI*0.05);
+      Karts[3] = new RaceKart("Bot", 1, 1, 50, Math.PI*0.05, 10, 20);
       Karts[3].SetPosition(110, 110);
    }
    
