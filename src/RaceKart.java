@@ -253,5 +253,84 @@ public class RaceKart implements Serializable
    }
    
    
+   public boolean WithinBounding(int x, int y)
+   {
+      boolean found = false;
+      
+      //Trig effect
+      /*
+      
+      //Bounding Box dimentions
+      /*double xBoundingUpper = 
+      (((this.xPosition + this.width) * cosineValue)
+       - ((this.yPosition + this.length) * sineValue));
+       
+      double yBoundingUpper = 
+      (((this.xPosition + this.width) * sineValue)
+       + ((this.yPosition + this.length) * cosineValue));
+       
+       double xBoundingLower = 
+      (((this.xPosition - this.width) * cosineValue)
+       - ((this.yPosition - this.length) * sineValue));
+       
+      double yBoundingLower = 
+      (((this.xPosition - this.width) * sineValue)
+       + ((this.yPosition - this.length) * cosineValue)); */
+       /*
+       double xFrontLeft = (this.xPosition - this.width) * sineValue;
+       double yFrontLeft = (this.yPosition - this.length) * cosineValue;
+       
+       double xBackRight = (this.xPosition + this.width) * sineValue;
+       double yBackRight = (this.yPosition + this.length) * cosineValue;*/
+      
+      //Consider other point
+      double xRelitive = x - this.xPosition;
+      double yRelitive = y - this.yPosition;
+      
+      //Rotate to be relitive
+      double distance = Math.sqrt((xRelitive * xRelitive) + (yRelitive * yRelitive));
+      
+      double angle = Math.atan2(yRelitive, xRelitive);
+      angle = (angle + TAU - this.Bearing) % TAU;
+      
+      double sineValue = Math.sin(angle);
+      double cosineValue = Math.cos(angle);
+      
+      xRelitive = distance * sineValue;
+      yRelitive = distance * cosineValue;
+      
+     
+      //float lineA = 
+      /*(((xRelitive - xBoundingUpper) * (yBoundingLower - yBoundingUpper))
+       - ((yRelitive - yBoundingUpper) * (xBoundingLower - xBoundingUpper)));
+       
+       float lineB = 
+      (((xRelitive - xBoundingUpper) * (yBoundingLower - yBoundingUpper))
+       - ((yRelitive - yBoundingUpper) * (xBoundingLower - xBoundingUpper)));
+       
+      float lineC = 
+      (((xRelitive - xBoundingLower) * (yBoundingUpper - yBoundingLower))
+       - ((yRelitive - yBoundingLower) * (xBoundingUpper - xBoundingLower)));
+      */
+      
+      return found;
+   } 
+   
+   public boolean WithinCircularBounding(RaceKart kart)
+   {
+      boolean found = false;
+      
+      double selfRadius = Math.sqrt((this.carWidth * this.carWidth) + (this.carLength * this.carLength));
+      double otherRadius = Math.sqrt((kart.carWidth * kart.carWidth) + (kart.carLength * kart.carLength));
+      
+      float xDistance = (this.xPosition - kart.X());
+      float  yDistance = (this.yPosition - kart.Y());
+
+      double distanceBetween = Math.sqrt((xDistance * xDistance) + (yDistance * yDistance));;
+      
+      found = distanceBetween <= (selfRadius + otherRadius);
+      
+      return found;
+   }
    
 }
