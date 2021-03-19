@@ -87,12 +87,48 @@ public class GameWorld implements Runnable
       
    }
    
+   private void CheckCollsions()
+   {
+      
+      for(int i = 0; i < Karts.length; i++)
+      {
+         if (Karts[i] != null)
+         {
+            for(int j = 0; j < Karts.length; j++)
+            {
+               if (Karts[j] != null)
+               {
+                  //Are they close to each other
+                  if(Karts[i].WithinCircularBounding(Karts[j]))
+                  {
+                     boolean isColliding = false;
+                     
+                     //For each corner
+                     isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].FrontLeft()));
+                     isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].FrontRight()));
+                     isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].BackLeft()));
+                     isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].BackRight()));
+                     
+                     //Collision is occouring?
+                     if (isColliding)
+                     {
+                        
+                     }
+                  }
+               }
+            }
+         }
+      }
+      
+      
+   }
+   
    
    public void run()
    {
       MoveKarts();
       
-      
+      CheckCollsions()
    }
    
 }
