@@ -252,7 +252,7 @@ public class RaceKart implements Serializable
       return output;
    }
    
-   public point CornerPoint(int x, int y)
+   private point CornerPoint(float x, float y)
    {
       double distance = Math.sqrt((x * x) + (y * y));
    
@@ -262,10 +262,41 @@ public class RaceKart implements Serializable
       double sineValue = Math.sin(angle);
       double cosineValue = Math.cos(angle);
       
-      Point output = new Point();
+      Point output = new Point(distance * sineValue, distance * cosineValue);
       
-      double xRelitive = distance * sineValue;
-      double yRelitive = distance * cosineValue;
+      return output
+   }
+   
+   public point FrontLeft()
+   {
+      int x = xPosition - carWidth;
+      int y = yPosition - carHeight;
+      
+      return CornerPoint(x, y);
+   }
+   
+   public point FrontRight()
+   {
+      int x = xPosition + carWidth;
+      int y = yPosition - carHeight;
+      
+      return CornerPoint(x, y);
+   }
+   
+   public point BackLeft()
+   {
+      int x = xPosition - carWidth;
+      int y = yPosition + carHeight;
+      
+      return CornerPoint(x, y);
+   }
+   
+   public point BackRight()
+   {
+      int x = xPosition + carWidth;
+      int y = yPosition + carHeight;
+      
+      return CornerPoint(x, y);
    }
    
    public boolean WithinBounding(int x, int y)
