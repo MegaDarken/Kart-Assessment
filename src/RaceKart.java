@@ -252,6 +252,21 @@ public class RaceKart implements Serializable
       return output;
    }
    
+   public point CornerPoint(int x, int y)
+   {
+      double distance = Math.sqrt((x * x) + (y * y));
+   
+      double angle = Math.atan2(y, x);
+      angle = (angle + TAU - this.Bearing) % TAU;
+      
+      double sineValue = Math.sin(angle);
+      double cosineValue = Math.cos(angle);
+      
+      Point output = new Point();
+      
+      double xRelitive = distance * sineValue;
+      double yRelitive = distance * cosineValue;
+   }
    
    public boolean WithinBounding(int x, int y)
    {
