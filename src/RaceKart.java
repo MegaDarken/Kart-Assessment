@@ -327,6 +327,12 @@ public class RaceKart implements Serializable
       return found;
    } 
    
+   public boolean WithinBounding(Point point)
+   {
+      return WithinBounding(point.x, point.y);
+   }
+   
+   
    public boolean WithinCircularBounding(RaceKart kart)
    {
       boolean found = false;
