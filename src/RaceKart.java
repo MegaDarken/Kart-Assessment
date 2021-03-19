@@ -1,5 +1,6 @@
 //File: RaceKart.java
 import java.io.Serializable;
+import java.awt.*;
 
 public class RaceKart implements Serializable
 {
@@ -252,7 +253,7 @@ public class RaceKart implements Serializable
       return output;
    }
    
-   private point CornerPoint(float x, float y)
+   private Point CornerPoint(float x, float y)
    {
       double distance = Math.sqrt((x * x) + (y * y));
    
@@ -262,39 +263,39 @@ public class RaceKart implements Serializable
       double sineValue = Math.sin(angle);
       double cosineValue = Math.cos(angle);
       
-      Point output = new Point(distance * sineValue, distance * cosineValue);
+      Point output = new Point((int)(distance * sineValue), (int)(distance * cosineValue));
       
-      return output
+      return output;
    }
    
-   public point FrontLeft()
+   public Point FrontLeft()
    {
-      int x = xPosition - carWidth;
-      int y = yPosition - carHeight;
-      
-      return CornerPoint(x, y);
-   }
-   
-   public point FrontRight()
-   {
-      int x = xPosition + carWidth;
-      int y = yPosition - carHeight;
+      float x = xPosition - carWidth;
+      float y = yPosition - carLength;
       
       return CornerPoint(x, y);
    }
    
-   public point BackLeft()
+   public Point FrontRight()
    {
-      int x = xPosition - carWidth;
-      int y = yPosition + carHeight;
+      float x = xPosition + carWidth;
+      float y = yPosition - carLength;
       
       return CornerPoint(x, y);
    }
    
-   public point BackRight()
+   public Point BackLeft()
    {
-      int x = xPosition + carWidth;
-      int y = yPosition + carHeight;
+      float x = xPosition - carWidth;
+      float y = yPosition + carLength;
+      
+      return CornerPoint(x, y);
+   }
+   
+   public Point BackRight()
+   {
+      float x = xPosition + carWidth;
+      float y = yPosition + carLength;
       
       return CornerPoint(x, y);
    }

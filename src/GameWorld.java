@@ -128,7 +128,7 @@ public class GameWorld implements Runnable
    {
       MoveKarts();
       
-      CheckCollsions()
+      CheckCollsions();
    }
    
 }
