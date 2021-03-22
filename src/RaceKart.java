@@ -257,7 +257,7 @@ public class RaceKart implements Serializable
    {
       double distance = Math.sqrt((x * x) + (y * y));
    
-      double angle = Math.atan2(y, x);
+      double angle = Math.atan2(x, y);
       angle = (angle + TAU - this.Bearing) % TAU;
       
       double sineValue = Math.sin(angle);
@@ -337,7 +337,7 @@ public class RaceKart implements Serializable
       //Rotate to be relitive
       double distance = Math.sqrt((xRelitive * xRelitive) + (yRelitive * yRelitive));
       
-      double angle = Math.atan2(yRelitive, xRelitive);
+      double angle = Math.atan2(xRelitive, yRelitive);
       angle = (angle + TAU - this.Bearing) % TAU;
       
       double sineValue = Math.sin(angle);
