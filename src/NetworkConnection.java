@@ -104,6 +104,7 @@ class NetworkConnection implements Runnable
             
             do 
             {
+               /*
                System.out.print("CLIENT: ");
                request = scanner.nextLine(); 
 
@@ -113,6 +114,15 @@ class NetworkConnection implements Runnable
    				{
    					System.out.println("SERVER: " + responseLine);
    				}
+               */
+               
+               //Determine action
+               
+               
+               sendRequest();
+               
+               receiveRequest();
+               
                
                if ( request.equals("CLOSE") )
                {
@@ -122,13 +132,7 @@ class NetworkConnection implements Runnable
             
 								
 				// close the input/output streams and socket
-				outputStream.close();
-				inputStream.close();
-				clientSocket.close();
-			}
-			catch (UnknownHostException e)
-			{
-				System.err.println("Trying to connect to unknown host: " + e);
+				CloseConnections();
 			}
 			catch (IOException e)
 			{
@@ -159,14 +163,25 @@ class NetworkConnection implements Runnable
    
    public void CloseConnections()
    {
-      outputStream.close();
-		inputStream.close();
-      
-      outputObject.close();
-		inputObject.close();
-
-      
-		clientSocket.close();
+      try
+      {
+         outputStream.close();
+   		inputStream.close();
+         
+         outputObject.close();
+   		inputObject.close();
+   
+         
+   		clientSocket.close();
+      }
+      catch (UnknownHostException e)
+		{
+			System.err.println("Trying to connect to unknown host: " + e);
+		}
+		catch (IOException e)
+		{
+			System.err.println("IOException:  " + e);
+		}
    }
    
    //REQUEST HANDLING
@@ -210,7 +225,8 @@ class NetworkConnection implements Runnable
                
                if ( request.equals("CLOSE") )
                {
-                  break;
+                  //Send signal to exit
+                  //break;
                }
                
                switch(request)
@@ -300,7 +316,8 @@ class NetworkConnection implements Runnable
                
                if ( line.equals("CLOSE") )
                {
-                  break;
+                  //Send signal to exit
+                  //break
                }
                
                //Split line into parts
