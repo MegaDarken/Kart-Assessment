@@ -33,6 +33,10 @@ public class PacketHandling
       this.serverPort = serverPort;
       
       serverConnection = new NetworkConnection(this.serverAddress, this.serverPort);
+      
+      //Run connection
+      Thread connectionThread = new Thread(serverConnection);
+      connectionThread.start();
    }
    
    public PacketHandling(InetAddress serverAddress)
