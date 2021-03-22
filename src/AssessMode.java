@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.*;
 
-public class AssessMode extends JFrame
+public class AssessMode
 {
    //Constants
    static final String ARGUMENT_SERVER = "-server";
