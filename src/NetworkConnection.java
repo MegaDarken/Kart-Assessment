@@ -157,6 +157,18 @@ class NetworkConnection implements Runnable
       this.hostPort = hostPort;
    }
    
+   public void CloseConnections()
+   {
+      outputStream.close();
+		inputStream.close();
+      
+      outputObject.close();
+		inputObject.close();
+
+      
+		clientSocket.close();
+   }
+   
    //REQUEST HANDLING
    
    private void sendRequest()
@@ -183,8 +195,8 @@ class NetworkConnection implements Runnable
             output.flush();
             */
             
-            do 
-            {
+            //do 
+            //{
                System.out.print("CLIENT: ");
                request = scanner.nextLine(); 
                //index = scanner.nextLine();
@@ -228,13 +240,13 @@ class NetworkConnection implements Runnable
                   System.out.print("Exception thrown for Thread.sleep: " + e);
                }
                
-            } while(true);
+            //} while(true);
             
 								
 				// close the input/output streams and socket
-				outputStream.close();
-				inputStream.close();
-				clientSocket.close();
+				//outputStream.close();
+				//inputStream.close();
+				//clientSocket.close();
 			}
          catch (ClassNotFoundException e)
          {
@@ -278,8 +290,8 @@ class NetworkConnection implements Runnable
             }
             */
             //Connection Loop
-            do
-            {
+            //do
+            //{
       			if((line = inputStream.readLine()) != null)
       			{
       				
@@ -335,12 +347,12 @@ class NetworkConnection implements Runnable
                   System.out.print("Exception thrown for Thread.sleep: " + e);
                }
    
-            } while(true);
+            //} while(true);
             
    			
    			// Comment out/remove the outputStream and server close statements if server should remain live
-   			outputStream.close();
-   			inputStream.close();
+   			//outputStream.close();
+   			//inputStream.close();
             
          }
          catch (Exception e)
