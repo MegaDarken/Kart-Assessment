@@ -66,6 +66,9 @@ public class PacketHandling
       //Create Connection
       serverConnection = new NetworkConnection(this.serverAddress, this.serverPort);
       
+      //Run connection
+      Thread connectionThread = new Thread(serverConnection);
+      connectionThread.start();
    }
    
    /*
