@@ -98,21 +98,26 @@ public class GameWorld implements Runnable
             {
                if (Karts[j] != null)
                {
-                  //Are they close to each other
-                  if(Karts[i].WithinCircularBounding(Karts[j]))
+                  if(i != j)
                   {
-                     boolean isColliding = false;
-                     
-                     //For each corner
-                     isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].FrontLeft()));
-                     isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].FrontRight()));
-                     isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].BackLeft()));
-                     isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].BackRight()));
-                     
-                     //Collision is occouring?
-                     if (isColliding)
+                     //Are they close to each other
+                     if(Karts[i].WithinCircularBounding(Karts[j]))
                      {
+                        System.out.println("Close: " + i + " " + j);
+                     
+                        boolean isColliding = false;
                         
+                        //For each corner
+                        isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].FrontLeft()));
+                        isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].FrontRight()));
+                        isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].BackLeft()));
+                        isColliding = (isColliding || Karts[i].WithinBounding(Karts[j].BackRight()));
+                        
+                        //Collision is occouring?
+                        if (isColliding)
+                        {
+                           System.out.println("Collision: " + i + " " + j);
+                        }
                      }
                   }
                }
