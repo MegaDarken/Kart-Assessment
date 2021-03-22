@@ -134,9 +134,9 @@ class NetworkConnection implements Runnable
 				// close the input/output streams and socket
 				CloseConnections();
 			}
-			catch (IOException e)
+			catch (Exception e)
 			{
-				System.err.println("IOException:  " + e);
+				System.err.println("Exception:  " + e);
 			}
 		}
    }
