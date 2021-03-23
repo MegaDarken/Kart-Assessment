@@ -139,14 +139,7 @@ class NetworkConnection implements Runnable
                   break;
                }
                
-               try
-               {
-                  Thread.sleep(1);
-               }
-               catch(Exception e)
-               {
-                  System.out.print("Exception thrown for Thread.sleep: " + e);
-               }
+               AttemptSleep(1);
                
                index++;
                
@@ -272,14 +265,7 @@ class NetworkConnection implements Runnable
                      System.out.println("Object Defaulted: " + currentObject);
                }
                
-               try
-               {
-                  Thread.sleep(10);
-               }
-               catch(Exception e)
-               {
-                  System.out.print("Exception thrown for Thread.sleep: " + e);
-               }
+               AttemptSleep(10);
                
             //} while(true);
             
@@ -380,14 +366,7 @@ class NetworkConnection implements Runnable
                }
 
                
-               try
-               {
-                  //Thread.sleep(1);
-               }
-               catch(Exception e)
-               {
-                  System.out.print("Exception thrown for Thread.sleep: " + e);
-               }
+               AttemptSleep(1);
    
             //} while(true);
             
@@ -438,6 +417,13 @@ class NetworkConnection implements Runnable
    
    private void AttemptSleep(int duration)
    {
-   
+      try
+      {
+         Thread.sleep(duration);
+      }
+      catch(Exception e)
+      {
+         System.out.print("Exception thrown for Thread.sleep: " + e);
+      }
    }
 }
