@@ -107,6 +107,8 @@ class NetworkConnection implements Runnable
             
             do 
             {
+               index = index % AssessMode.world.GetKarts().length;
+            
                /*
                System.out.print("CLIENT: ");
                request = scanner.nextLine(); 
@@ -120,7 +122,7 @@ class NetworkConnection implements Runnable
                */
                
                //Determine action
-               
+               request = REQUEST_KART;
                
                sendRequest();
                
@@ -140,6 +142,9 @@ class NetworkConnection implements Runnable
                {
                   System.out.print("Exception thrown for Thread.sleep: " + e);
                }
+               
+               index++;
+               
             } while(true);
             
 								
