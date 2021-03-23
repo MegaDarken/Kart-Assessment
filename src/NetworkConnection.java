@@ -11,6 +11,7 @@ class NetworkConnection implements Runnable
    private final String REQUEST_CONTROL = "control";
    private final String REQUEST_KART = "kart";
    
+   private final String SPLIT_CHAR = " ";
 
    //Attribute(s)
 
@@ -79,7 +80,9 @@ class NetworkConnection implements Runnable
 
    public void run()
    {
-		// Write data to the socket
+      System.out.println("Request: " + request);
+   
+		// check the socket
 		if (
          clientSocket != null && 
          outputStream != null && 
@@ -321,7 +324,7 @@ class NetworkConnection implements Runnable
                }
                
                //Split line into parts
-               String[] splitLine = line.split(" ");
+               String[] splitLine = line.split(SPLIT_CHAR);
                
                //Check length
                request = splitLine[0];
