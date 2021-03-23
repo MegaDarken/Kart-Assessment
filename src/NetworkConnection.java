@@ -396,22 +396,38 @@ class NetworkConnection implements Runnable
    
    private void sendKart()
    {
-   
+      // write object to stream
+      outputObject.writeObject(AssessMode.world.GetKarts()[index]);
+
+      // send it
+      outputObject.flush();
    }
    
-   private void ReceiveKart()
+   private void receiveKart()
    {
-   
+      //Collect kart
+      RaceKart currentKart = (RaceKart) inputObject.readObject();
+      
+      //Place into world
+      AssessMode.world.GetKarts()[index] = currentKart;
    }
    
    private void sendControl()
    {
+      // write object to stream
+      outputObject.writeObject(AssessMode.world.GetControls()[index]);
    
+      // send it
+      outputObject.flush();
    }
    
-   private void ReceiveControl()
+   private void receiveControl()
    {
-   
+      //Collect control
+      byte[] currentControl = (byte[]) inputObject.readObject();
+      
+      //Place into world
+      AssessMode.world.GetControls()[index] = currentControl;
    }
    
    
