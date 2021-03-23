@@ -124,9 +124,14 @@ class NetworkConnection implements Runnable
                //Determine action
                request = REQUEST_KART;
                
+               
+               System.out.print("Sending: " + index);
                sendRequest();
                
+               System.out.print("Receiving: " + index);
                receiveRequest();
+               
+               
                
                
                if ( request.equals("CLOSE") )
@@ -261,7 +266,10 @@ class NetworkConnection implements Runnable
                      RaceKart currentKart = (RaceKart) inputObject.readObject();
                      AssessMode.world.GetKarts()[index] = currentKart;
                      break;
-               
+                  
+                  default:
+                     String currentObject = (String)inputObject.readObject();
+                     System.out.println("Object Defaulted: " + currentObject);
                }
                
                try
