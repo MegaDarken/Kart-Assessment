@@ -215,8 +215,8 @@ class NetworkConnection implements Runnable
             
             //do 
             //{
-               System.out.print("CLIENT: ");
-               request = scanner.nextLine(); 
+               //System.out.print("CLIENT: ");
+               //request = scanner.nextLine(); 
                //index = scanner.nextLine();
 
 				   outputStream.writeBytes( request + index + "\n" );
