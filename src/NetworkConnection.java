@@ -131,6 +131,15 @@ class NetworkConnection implements Runnable
                {
                   break;
                }
+               
+               try
+               {
+                  Thread.sleep(1);
+               }
+               catch(Exception e)
+               {
+                  System.out.print("Exception thrown for Thread.sleep: " + e);
+               }
             } while(true);
             
 								
