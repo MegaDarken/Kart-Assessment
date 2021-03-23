@@ -36,6 +36,9 @@ public class AssessMode
       
       //Determine running mode
       //AsServer = Arrays.asList(args).contains(ARGUMENT_SERVER);
+      world = new GameWorld();
+         
+      world.SetClientKart(1);//DEBUG
       
       //Get Server address
       InetAddress serverAddress = null;
@@ -71,6 +74,11 @@ public class AssessMode
       }
       else
       {
+         
+         //connectionHandle = new PacketHandling();
+         
+         
+      
          //No Address...
          
          //Request from user
@@ -98,11 +106,6 @@ public class AssessMode
 
       }
       
-      //connectionHandle = new PacketHandling();
-      
-      world = new GameWorld();
-      
-      world.SetClientKart(1);//DEBUG
       
       
       
