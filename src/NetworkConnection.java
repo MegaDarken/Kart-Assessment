@@ -403,4 +403,41 @@ class NetworkConnection implements Runnable
          }
       }
    }
+   
+   
+   private void sendMessage()
+   {
+   
+   }
+   
+   private void ReceiveMessage()
+   {
+   
+   }
+   
+   private void sendKart()
+   {
+   
+   }
+   
+   private void ReceiveKart()
+   {
+   
+   }
+   
+   private void sendControl()
+   {
+   
+   }
+   
+   private void ReceiveControl()
+   {
+   
+   }
+   
+   
+   private void AttemptSleep(int duration)
+   {
+   
+   }
 }
