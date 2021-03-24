@@ -396,38 +396,66 @@ class NetworkConnection implements Runnable
    
    private void sendKart()
    {
-      // write object to stream
-      outputObject.writeObject(AssessMode.world.GetKarts()[index]);
-
-      // send it
-      outputObject.flush();
+      try
+      {
+         // write object to stream
+         outputObject.writeObject(AssessMode.world.GetKarts()[index]);
+   
+         // send it
+         outputObject.flush();
+      }
+		catch (IOException e)
+		{
+			System.err.println("IOException:  " + e);
+		}
    }
    
    private void receiveKart()
    {
-      //Collect kart
-      RaceKart currentKart = (RaceKart) inputObject.readObject();
-      
-      //Place into world
-      AssessMode.world.GetKarts()[index] = currentKart;
+      try
+      {
+         //Collect kart
+         RaceKart currentKart = (RaceKart) inputObject.readObject();
+         
+         //Place into world
+         AssessMode.world.GetKarts()[index] = currentKart;
+      }
+		catch (IOException e)
+		{
+			System.err.println("IOException:  " + e);
+		}
    }
    
    private void sendControl()
    {
-      // write object to stream
-      outputObject.writeObject(AssessMode.world.GetControls()[index]);
-   
-      // send it
-      outputObject.flush();
+      try
+      {
+         // write object to stream
+         outputObject.writeObject(AssessMode.world.GetControls()[index]);
+      
+         // send it
+         outputObject.flush();
+      }
+		catch (IOException e)
+		{
+			System.err.println("IOException:  " + e);
+		}
    }
    
    private void receiveControl()
    {
-      //Collect control
-      byte[] currentControl = (byte[]) inputObject.readObject();
-      
-      //Place into world
-      AssessMode.world.GetControls()[index] = currentControl;
+      try
+      {
+         //Collect control
+         byte[] currentControl = (byte[]) inputObject.readObject();
+         
+         //Place into world
+         AssessMode.world.GetControls()[index] = currentControl;
+      }
+		catch (IOException e)
+		{
+			System.err.println("IOException:  " + e);
+		}
    }
    
    
