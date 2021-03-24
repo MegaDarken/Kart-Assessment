@@ -420,6 +420,10 @@ class NetworkConnection implements Runnable
          //Place into world
          AssessMode.world.GetKarts()[index] = currentKart;
       }
+      catch (ClassNotFoundException e)
+      {
+         System.err.println("Class not found: " + e);
+      }
 		catch (IOException e)
 		{
 			System.err.println("IOException:  " + e);
@@ -451,6 +455,10 @@ class NetworkConnection implements Runnable
          
          //Place into world
          AssessMode.world.GetControls()[index] = currentControl;
+      }
+      catch (ClassNotFoundException e)
+      {
+         System.err.println("Class not found: " + e);
       }
 		catch (IOException e)
 		{
