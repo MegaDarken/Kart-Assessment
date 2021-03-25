@@ -307,7 +307,7 @@ class NetworkConnection implements Runnable
       			if((line = receiveMessage()) != null)
       			{
       				
-                  sendMessage( line + "\n" );
+                  sendMessage( line );
       			}
                
                line = receiveMessage();
@@ -331,7 +331,7 @@ class NetworkConnection implements Runnable
                      
                      //Get object
                      
-                     sendControl()
+                     sendControl();
                      break;
                   
                   case REQUEST_KART:
