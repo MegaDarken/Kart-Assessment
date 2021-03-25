@@ -214,14 +214,14 @@ class NetworkConnection implements Runnable
 			{
          
 
-				   outputStream.writeBytes( request + index + "\n" );
+				   sendMessage( request + index );
             
-   				if((responseLine = inputStream.readLine()) != null)
+   				if((responseLine = receiveMessage()) != null)
    				{
    					System.out.println("SERVER: " + responseLine);
    				}
                
-               outputStream.writeBytes( request + index + "\n" );
+               sendMessage( request + index );
                
                if ( request.equals("CLOSE") )
                {
@@ -234,15 +234,15 @@ class NetworkConnection implements Runnable
                   case REQUEST_CONTROL:
                      
                      //Get object
-                     byte[] currentControl = (byte[]) inputObject.readObject();
-                     AssessMode.world.GetControls()[index] = currentControl;
+                     receiveControl();
+                     
                      break;
                   
                   case REQUEST_KART:
                      
                      //Get object
-                     RaceKart currentKart = (RaceKart) inputObject.readObject();
-                     AssessMode.world.GetKarts()[index] = currentKart;
+                     receiveKart();
+                     
                      break;
                   
                   default:
@@ -304,13 +304,13 @@ class NetworkConnection implements Runnable
             //Connection Loop
             //do
             //{
-      			if((line = inputStream.readLine()) != null)
+      			if((line = receiveMessage()) != null)
       			{
       				
-                  outputStream.writeBytes( line + "\n" );
+                  sendMessage( line + "\n" );
       			}
                
-               line = inputStream.readLine();
+               line = receiveMessage();
                
                if ( line.equals("CLOSE") )
                {
@@ -331,11 +331,7 @@ class NetworkConnection implements Runnable
                      
                      //Get object
                      
-                     // write object to stream
-                     outputObject.writeObject(AssessMode.world.GetControls()[index]);
-            
-                     // send it
-                     outputObject.flush();
+                     sendControl()
                      break;
                   
                   case REQUEST_KART:
@@ -344,7 +340,7 @@ class NetworkConnection implements Runnable
                      //AssessMode.world.GetKarts()[index];//RaceKart currentKart = (RaceKart) inputObject.readObject();
                      
                      // write object to stream
-                     outputObject.writeObject(AssessMode.world.GetKarts()[index]);
+                     sendKart();
             
                      // send it
                      outputObject.flush();
