@@ -212,24 +212,7 @@ class NetworkConnection implements Runnable
       ) {
          try
 			{
-         /*
-            // setup serializable object - this would normally be done somewhere
-            //    where the object can be easily used by the client, not just
-            //    before sending it through the socket
-            Kart kart = new Kart( "Kart1" );
-            
-            // write object to stream
-            output.writeObject( kart );
-            
-            // send it
-            output.flush();
-            */
-            
-            //do 
-            //{
-               //System.out.print("CLIENT: ");
-               //request = scanner.nextLine(); 
-               //index = scanner.nextLine();
+         
 
 				   outputStream.writeBytes( request + index + "\n" );
             
@@ -237,6 +220,8 @@ class NetworkConnection implements Runnable
    				{
    					System.out.println("SERVER: " + responseLine);
    				}
+               
+               outputStream.writeBytes( request + index + "\n" );
                
                if ( request.equals("CLOSE") )
                {
@@ -324,6 +309,8 @@ class NetworkConnection implements Runnable
       				
                   outputStream.writeBytes( line + "\n" );
       			}
+               
+               line = inputStream.readLine();
                
                if ( line.equals("CLOSE") )
                {
