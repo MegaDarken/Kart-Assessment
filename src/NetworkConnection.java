@@ -14,6 +14,7 @@ class NetworkConnection implements Runnable
    private final String SPLIT_CHAR = " ";
 
    //Attribute(s)
+   private boolean connected;
 
    private InetAddress hostAddress;
    private int hostPort;
@@ -67,6 +68,8 @@ class NetworkConnection implements Runnable
          inputObject = new ObjectInputStream(
             clientSocket.getInputStream()
          );
+         
+         connected = true;
 		} 
 		catch (UnknownHostException e)
 		{
@@ -144,7 +147,7 @@ class NetworkConnection implements Runnable
                
                index++;
                
-            } while(true);
+            } while(connected);
             
 								
 				// close the input/output streams and socket
@@ -393,6 +396,7 @@ class NetworkConnection implements Runnable
       catch (IOException e)
 		{
 			System.err.println("IOException:  " + e);
+         connected = false;
          return null;
       }
    }
@@ -410,6 +414,7 @@ class NetworkConnection implements Runnable
 		catch (IOException e)
 		{
 			System.err.println("IOException:  " + e);
+         connected = false;
 		}
    }
    
@@ -430,6 +435,7 @@ class NetworkConnection implements Runnable
 		catch (IOException e)
 		{
 			System.err.println("IOException:  " + e);
+         connected = false;
 		}
    }
    
@@ -446,6 +452,7 @@ class NetworkConnection implements Runnable
 		catch (IOException e)
 		{
 			System.err.println("IOException:  " + e);
+         connected = false;
 		}
    }
    
@@ -466,6 +473,7 @@ class NetworkConnection implements Runnable
 		catch (IOException e)
 		{
 			System.err.println("IOException:  " + e);
+         connected = false;
 		}
    }
    
