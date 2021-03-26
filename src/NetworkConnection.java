@@ -124,6 +124,7 @@ class NetworkConnection implements Runnable
                //Determine action
                request = REQUEST_KART;
                
+               //if line is received?
                
                System.out.print("Sending: " + index);
                sendRequest();
@@ -213,15 +214,17 @@ class NetworkConnection implements Runnable
          try
 			{
          
-
-				   sendMessage( request + index );
+               System.out.println("(Send:Send1)");
+				   sendMessage( request + SPLIT_CHAR + index );
             
+               System.out.println("(Send:Reponce1)");
    				if((responseLine = receiveMessage()) != null)
    				{
    					System.out.println("SERVER: " + responseLine);
    				}
                
-               sendMessage( request + index );
+               System.out.println("(Send:Send2)");
+               sendMessage( request + SPLIT_CHAR + index );
                
                if ( request.equals("CLOSE") )
                {
@@ -229,6 +232,7 @@ class NetworkConnection implements Runnable
                   //break;
                }
                
+               System.out.println("(Send:Reponce2File)");
                switch(request)
                {
                   case REQUEST_CONTROL:
