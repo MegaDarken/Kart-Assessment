@@ -107,6 +107,7 @@ class NetworkConnection implements Runnable
             // send it
             output.flush();
             */
+            String line = null;
             
             do 
             {
@@ -128,12 +129,29 @@ class NetworkConnection implements Runnable
                request = REQUEST_KART;
                
                //if line is received?
+               if ((line = receiveMessage()) != null)
+               {
+                  //Split line into parts
+                  String[] splitLine = line.split(SPLIT_CHAR);
+                  
+                  //Check length
+                  if(line.length() > 1)
+                  {
+                  request = splitLine[0];
+                  index = Integer.parseInt(splitLine[1]);
                
-               System.out.print("Sending: " + index);
-               sendRequest();
+                  System.out.print("Receiving: " + index);
+                  receiveRequest();
+                  }
+               }
+               else
+               {
+                  
                
-               System.out.print("Receiving: " + index);
-               receiveRequest();
+                  System.out.print("Sending: " + index);
+                  sendRequest();
+               }
+               
                
                
                
@@ -216,7 +234,7 @@ class NetworkConnection implements Runnable
       ) {
          try
 			{
-         
+               /*
                System.out.println("(Send:Send1)");
 				   sendMessage( request + SPLIT_CHAR + index );
             
@@ -234,6 +252,7 @@ class NetworkConnection implements Runnable
                   //Send signal to exit
                   //break;
                }
+               */
                
                System.out.println("(Send:Reponce2File)");
                switch(request)
@@ -311,6 +330,7 @@ class NetworkConnection implements Runnable
             //Connection Loop
             //do
             //{
+               /*
       			if((line = receiveMessage()) != null)
       			{
       				
@@ -331,6 +351,7 @@ class NetworkConnection implements Runnable
                //Check length
                request = splitLine[0];
                int currentIndex = Integer.parseInt(splitLine[1]);
+               */
                
                switch(request)
                {
@@ -383,6 +404,7 @@ class NetworkConnection implements Runnable
       catch (IOException e)
 		{
 			System.err.println("IOException:  " + e);
+         connected = false;
       }
    }
    
