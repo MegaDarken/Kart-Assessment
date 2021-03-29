@@ -132,24 +132,26 @@ class NetworkConnection implements Runnable
                //if line is received?
                if ((line = receiveMessage()) != null)
                {
+                  System.out.print("Receiving: " + index);
+                  
                   //Split line into parts
                   String[] splitLine = line.split(SPLIT_CHAR);
                   
                   //Check length
                   if(line.length() > 1)
                   {
-                  request = splitLine[0];
-                  index = Integer.parseInt(splitLine[1]);
-               
-                  System.out.print("Receiving: " + index);
-                  receiveRequest();
+                     request = splitLine[0];
+                     index = Integer.parseInt(splitLine[1]);
+                  
+                     receiveRequest();
                   }
                }
                else
                {
+                  System.out.print("Sending: " + index);
                   sendMessage(request + SPLIT_CHAR + index);
                
-                  System.out.print("Sending: " + index);
+                  
                   sendRequest();
                }
                
@@ -174,9 +176,13 @@ class NetworkConnection implements Runnable
 			}
 			catch (Exception e)
 			{
-				System.err.println("Exception:  " + e);
+				System.err.println("Failed to run due to 'null' element");
 			}
 		}
+      else
+      {
+         System.out.println("Exception:  " + e);
+      }
    }
    
    public InetAddress GetHostAddress()
