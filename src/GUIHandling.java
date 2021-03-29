@@ -40,7 +40,7 @@ class GUIHandling implements Runnable
    //Loading
    private void LoadKartImages()
    {
-      System.out.println(System.getProperty("user.dir"));
+      //System.out.println(System.getProperty("user.dir"));
       
       for (int i = 0; i < KART_DIRECTIONS; i++)
       {
