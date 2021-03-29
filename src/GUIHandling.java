@@ -12,7 +12,7 @@ class GUIHandling implements Runnable
    private final int KART_IMAGE_HEIGHT = 50;
    
    //Image(s)
-   private final String IMAGE_DIRECTORY = "./Graphics/";
+   private final String IMAGE_DIRECTORY = "../src/Graphics/";
    private final String IMAGE_KART_FILENAME = "Kart";
    private final String IMAGE_FILE_EXTENSION = ".png";
    
@@ -40,6 +40,8 @@ class GUIHandling implements Runnable
    //Loading
    private void LoadKartImages()
    {
+      System.out.println(System.getProperty("user.dir"));
+      
       for (int i = 0; i < KART_DIRECTIONS; i++)
       {
          imageIcons[i] = new ImageIcon(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
@@ -94,7 +96,11 @@ class GUIHandling implements Runnable
 
    public void run()
    {
+      //Redraw 
+   
       UpdateKartImages(AssessMode.world.GetKarts());
       
    }
+   
+
 }
