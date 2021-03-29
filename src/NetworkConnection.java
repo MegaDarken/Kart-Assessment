@@ -45,7 +45,8 @@ class NetworkConnection implements Runnable
 //          System.out.println("ERR: Unable to resolve name and address");
 //       }
       scanner = new Scanner(System.in);
-
+      
+      System.out.println("Attempt Connection: " + hostAddress + ":" + hostPort);
 		
 		try
 		{
