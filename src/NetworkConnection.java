@@ -146,7 +146,7 @@ class NetworkConnection implements Runnable
                }
                else
                {
-                  
+                  sendMessage(request + SPLIT_CHAR + index);
                
                   System.out.print("Sending: " + index);
                   sendRequest();
