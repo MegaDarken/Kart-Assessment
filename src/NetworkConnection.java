@@ -331,11 +331,12 @@ class NetworkConnection implements Runnable
          inputObject != null
       ) {
       
-      String line = "";
+      //String line = "";
             
          try 
          {
-                           
+               System.out.println("(Receive:Responce): " + request);
+                                
                switch(request)
                {
                   case REQUEST_CONTROL:
