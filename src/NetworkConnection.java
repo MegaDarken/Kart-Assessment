@@ -139,6 +139,7 @@ class NetworkConnection implements Runnable
                   
                sendRequest();
                
+               System.out.print("Say Go");
                sendMessage(CONTINUE_NOTE); 
                
                //if line is received?
@@ -161,7 +162,8 @@ class NetworkConnection implements Runnable
                   }
                }
                
-               (line = receiveMessage());
+               System.out.print("Wait Go");
+               System.out.print(receiveMessage());
                
                if ( request.equals("CLOSE") )
                {
@@ -271,7 +273,7 @@ class NetworkConnection implements Runnable
                }
                */
                
-               System.out.println("(Send:Reponce2File)");
+               System.out.println("(Send:Reponce): " + request);
                switch(request)
                {
                   case REQUEST_CONTROL:
@@ -356,8 +358,7 @@ class NetworkConnection implements Runnable
                      break;
                      
                   default:
-                     String currentObject = (String)inputObject.readObject();
-                     System.out.println("Object Defaulted: " + currentObject);
+                     sendMessage("ERROR:DEFAULT!");
                
                }
 
