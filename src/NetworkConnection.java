@@ -10,6 +10,7 @@ class NetworkConnection implements Runnable
    //Const
    private final String REQUEST_CONTROL = "control";
    private final String REQUEST_KART = "kart";
+   private final String CONTINUE_NOTE = "continue";
    
    private final String SPLIT_CHAR = " ";
 
@@ -129,7 +130,7 @@ class NetworkConnection implements Runnable
                //Determine action
                request = REQUEST_KART;
                
-               System.out.print("Loop_");
+               //System.out.print("Loop_");
                
                System.out.print("Sending: " + index);
                sendMessage(request + SPLIT_CHAR + index);
@@ -137,6 +138,8 @@ class NetworkConnection implements Runnable
                AttemptSleep(10);
                   
                sendRequest();
+               
+               sendMessage(CONTINUE_NOTE); 
                
                //if line is received?
                if ((line = receiveMessage()) != null)
@@ -158,7 +161,7 @@ class NetworkConnection implements Runnable
                   }
                }
                
-               
+               (line = receiveMessage());
                
                if ( request.equals("CLOSE") )
                {
@@ -169,11 +172,17 @@ class NetworkConnection implements Runnable
                
                index++;
                
+               
+               //System.out.print("LoopEnd_");
+               
             } while(connected);
             
 								
 				// close the input/output streams and socket
+            System.out.print("Closing a Connection...");
+            
 				CloseConnections();
+            
 			}
 			catch (Exception e)
 			{
