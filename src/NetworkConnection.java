@@ -12,7 +12,7 @@ class NetworkConnection implements Runnable
    private final String REQUEST_KART = "kart";
    private final String CONTINUE_NOTE = "continue";
    
-   private final String SPLIT_CHAR = " ";
+   private final String SPLIT_CHAR = ";";
 
    //Attribute(s)
    private boolean connected;
@@ -145,13 +145,13 @@ class NetworkConnection implements Runnable
                //if line is received?
                if ((line = receiveMessage()) != null)
                {
-                  System.out.print("Receiving: " + index);
+                  System.out.print("Receiving: " + line);
                   
                   //Split line into parts
                   String[] splitLine = line.split(SPLIT_CHAR);
                   
                   //Check length
-                  if(line.length() > 1)
+                  if(splitLine.length > 1)
                   {
                      request = splitLine[0];
                      index = Integer.parseInt(splitLine[1]);
