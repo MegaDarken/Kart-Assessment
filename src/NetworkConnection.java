@@ -129,6 +129,15 @@ class NetworkConnection implements Runnable
                //Determine action
                request = REQUEST_KART;
                
+               System.out.print("Loop_");
+               
+               System.out.print("Sending: " + index);
+               sendMessage(request + SPLIT_CHAR + index);
+               
+               AttemptSleep(10);
+                  
+               sendRequest();
+               
                //if line is received?
                if ((line = receiveMessage()) != null)
                {
@@ -142,20 +151,12 @@ class NetworkConnection implements Runnable
                   {
                      request = splitLine[0];
                      index = Integer.parseInt(splitLine[1]);
-                  
+                     
+                     AttemptSleep(10);
+                     
                      receiveRequest();
                   }
                }
-               else
-               {
-                  System.out.print("Sending: " + index);
-                  sendMessage(request + SPLIT_CHAR + index);
-               
-                  
-                  sendRequest();
-               }
-               
-               
                
                
                
@@ -164,7 +165,7 @@ class NetworkConnection implements Runnable
                   break;
                }
                
-               AttemptSleep(1);
+               AttemptSleep(10);
                
                index++;
                
@@ -176,12 +177,12 @@ class NetworkConnection implements Runnable
 			}
 			catch (Exception e)
 			{
-				System.err.println("Failed to run due to 'null' element");
+				System.err.println("Exception:  " + e);
 			}
 		}
       else
       {
-         System.out.println("Exception:  " + e);
+         System.out.println("Failed to run due to 'null' element");
       }
    }
    
@@ -283,7 +284,7 @@ class NetworkConnection implements Runnable
                      System.out.println("Object Defaulted: " + currentObject);
                }
                
-               AttemptSleep(10);
+               //AttemptSleep(10);
                
             //} while(true);
             
@@ -378,13 +379,13 @@ class NetworkConnection implements Runnable
                      sendKart();
             
                      // send it
-                     outputObject.flush();
+                     //outputObject.flush();
                      break;
                
                }
 
                
-               AttemptSleep(1);
+               //AttemptSleep(1);
    
             //} while(true);
             
