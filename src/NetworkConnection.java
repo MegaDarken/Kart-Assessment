@@ -324,43 +324,7 @@ class NetworkConnection implements Runnable
             
          try 
          {
-            /*
-               // get object and cast it to a Kart (serializable class)
-               Kart kart = (Kart) inputObject.readObject();
-               
-               // test out the kart
-               System.out.println( "Kart name: " + kart.getName() );
-            } catch (ClassNotFoundException e) 
-            {
-               
-            }
-            */
-            //Connection Loop
-            //do
-            //{
-               /*
-      			if((line = receiveMessage()) != null)
-      			{
-      				
-                  sendMessage( line );
-      			}
-               
-               line = receiveMessage();
-               
-               if ( line.equals("CLOSE") )
-               {
-                  //Send signal to exit
-                  //break
-               }
-               
-               //Split line into parts
-               String[] splitLine = line.split(SPLIT_CHAR);
-               
-               //Check length
-               request = splitLine[0];
-               int currentIndex = Integer.parseInt(splitLine[1]);
-               */
-               
+                           
                switch(request)
                {
                   case REQUEST_CONTROL:
@@ -381,18 +345,15 @@ class NetworkConnection implements Runnable
                      // send it
                      //outputObject.flush();
                      break;
+                     
+                  default:
+                     String currentObject = (String)inputObject.readObject();
+                     System.out.println("Object Defaulted: " + currentObject);
                
                }
 
                
-               //AttemptSleep(1);
-   
-            //} while(true);
-            
-   			
-   			// Comment out/remove the outputStream and server close statements if server should remain live
-   			//outputStream.close();
-   			//inputStream.close();
+               
             
          }
          catch (Exception e)
