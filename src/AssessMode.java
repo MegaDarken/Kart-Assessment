@@ -27,7 +27,27 @@ public class AssessMode
    } 
 
    
+   static void userKartSelection()
+   {
+      Object[] possibilities = world.kartLiveries();
+      
+      
+      String selection = (String)JOptionPane.showInputDialog(frame,
+                    "Select your kart:",
+                    "Customized Dialog",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    possibilities,possibilities[0]);
 
+      //If a string was returned, say so.
+      if ((selection != null) && (selection.length() > 0))
+      {
+         world.SetClientKart(selection);
+         
+         return;
+      }
+   
+   }
 
 
    public static void main(String[] args)
@@ -38,7 +58,8 @@ public class AssessMode
       //AsServer = Arrays.asList(args).contains(ARGUMENT_SERVER);
       world = new GameWorld();
          
-      world.SetClientKart(1);//DEBUG
+      //world.SetClientKart(1);//DEBUG
+      userKartSelection();
       
       //Get Server address
       InetAddress serverAddress = null;
