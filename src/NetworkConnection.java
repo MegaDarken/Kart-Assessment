@@ -427,8 +427,11 @@ class NetworkConnection implements Runnable
          //Collect kart
          RaceKart currentKart = (RaceKart) inputObject.readObject();
          
-         //Place into world
-         AssessMode.world.GetKarts()[index] = currentKart;
+         if (AssessMode.world.GetClientKart() != index)
+         {
+            //Place into world
+            AssessMode.world.GetKarts()[index] = currentKart;
+         }
       }
       catch (ClassNotFoundException e)
       {
@@ -465,8 +468,11 @@ class NetworkConnection implements Runnable
          //Collect control
          byte[] currentControl = (byte[]) inputObject.readObject();
          
-         //Place into world
-         AssessMode.world.GetControls()[index] = currentControl;
+         if (AssessMode.world.GetClientKart() != index)
+         {
+            //Place into world
+            AssessMode.world.GetControls()[index] = currentControl;
+         }
       }
       catch (ClassNotFoundException e)
       {
