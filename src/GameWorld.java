@@ -128,6 +128,15 @@ public class GameWorld implements Runnable
       
    }
    
+   public Object[] kartLiveries()
+   {
+      Object[] liveries = new String[Karts.length]
+   
+      for(int i = 0; i < Karts.length; i++)
+      {
+         liveries[i] = Karts[i].Livery();
+      }
+   }
    
    public void run()
    {
