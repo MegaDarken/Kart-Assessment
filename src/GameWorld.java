@@ -58,6 +58,21 @@ public class GameWorld implements Runnable
       this.clientKart = value;
    }
    
+   public void SetClientKart(String value)
+   {
+      for(int i = 0; i < Karts.length; i++)
+      {
+         if (Karts[i].Livery() == value)
+         {
+            this.clientKart = i;
+            
+            return;
+         }
+      }
+      
+      this.clientKart = -1;
+   }
+   
    public byte[][] GetControls()
    {
       return this.controls;
