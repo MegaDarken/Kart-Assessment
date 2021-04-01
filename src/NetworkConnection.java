@@ -276,6 +276,12 @@ class NetworkConnection implements Runnable
                System.out.println("(Send:Reponce): " + request);
                switch(request)
                {
+                  case REQUEST_CLIENT:
+                     
+                     
+                     
+                     break;
+               
                   case REQUEST_CONTROL:
                      
                      //Get object
@@ -339,6 +345,12 @@ class NetworkConnection implements Runnable
                                 
                switch(request)
                {
+                  case REQUEST_CLIENT:
+                     
+                     
+                     
+                     break;
+               
                   case REQUEST_CONTROL:
                      
                      //Get object
