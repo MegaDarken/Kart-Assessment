@@ -10,6 +10,8 @@ class NetworkConnection implements Runnable
    //Const
    private final String REQUEST_CONTROL = "control";
    private final String REQUEST_KART = "kart";
+   private final String REQUEST_CLIENT_ID = "client_id";
+   
    private final String CONTINUE_NOTE = "continue";
    
    private final String SPLIT_CHAR = ";";
@@ -109,7 +111,9 @@ class NetworkConnection implements Runnable
             // send it
             output.flush();
             */
-            String line = null;
+            request = REQUEST_CLIENT_ID;
+         
+            receiveRequest();
             
             do 
             {
@@ -143,12 +147,12 @@ class NetworkConnection implements Runnable
                sendMessage(CONTINUE_NOTE); 
                
                //if line is received?
-               if ((line = receiveMessage()) != null)
+               if ((request = receiveMessage()) != null)
                {
-                  System.out.print("Receiving: " + line);
+                  System.out.print("Receiving: " + request);
                   
                   //Split line into parts
-                  String[] splitLine = line.split(SPLIT_CHAR);
+                  String[] splitLine = request.split(SPLIT_CHAR);
                   
                   //Check length
                   if(splitLine.length > 1)
@@ -278,7 +282,7 @@ class NetworkConnection implements Runnable
                {
                   case REQUEST_CLIENT_ID:
                      
-                     AssessMode.world.SetClientKart(Integer.parseInt(receiveMessage());
+                     AssessMode.world.SetClientKart(Integer.parseInt(receiveMessage()));
                      
                      break;
                
