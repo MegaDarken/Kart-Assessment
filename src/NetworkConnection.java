@@ -276,9 +276,9 @@ class NetworkConnection implements Runnable
                System.out.println("(Send:Reponce): " + request);
                switch(request)
                {
-                  case REQUEST_CLIENT:
+                  case REQUEST_CLIENT_ID:
                      
-                     
+                     AssessMode.world.SetClientKart(Integer.parseInt(receiveMessage());
                      
                      break;
                
@@ -345,9 +345,9 @@ class NetworkConnection implements Runnable
                                 
                switch(request)
                {
-                  case REQUEST_CLIENT:
+                  case REQUEST_CLIENT_ID:
                      
-                     
+                     sendMessage(Integer.toString(AssessMode.world.GetClientKart()));
                      
                      break;
                
