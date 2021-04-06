@@ -31,8 +31,8 @@ class NetworkConnection implements Runnable
    private BufferedReader inputStream = null;
 	private String responseLine;
       
-   private ObjectOutput outputObject = null;
-   private ObjectInput inputObject = null;
+   private ObjectOutputStream outputObject = null;
+   private ObjectInputStream inputObject = null;
    
    public NetworkConnection(InetAddress hostAddress, int hostPort)
    {
@@ -444,11 +444,17 @@ class NetworkConnection implements Runnable
    {
       try
       {
+         outputObject.reset();
+      
          // write object to stream
          outputObject.writeObject(AssessMode.world.GetKarts()[index]);
    
          // send it
          outputObject.flush();
+         
+         //System.out.print(" InWorld - ");
+         //System.out.print(" X: " + AssessMode.world.GetKarts()[index].X());
+         //System.out.println(" Y: " + AssessMode.world.GetKarts()[index].Y());
       }
 		catch (IOException e)
 		{
@@ -487,6 +493,8 @@ class NetworkConnection implements Runnable
    {
       try
       {
+         outputObject.reset();
+      
          // write object to stream
          outputObject.writeObject(AssessMode.world.GetControls()[index]);
       
