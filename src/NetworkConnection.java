@@ -89,6 +89,8 @@ class NetworkConnection implements Runnable
    {
       System.out.println("Request: " + request);
    
+      String continueMessage = "";
+   
 		// check the socket
 		if (
          clientSocket != null && 
@@ -155,20 +157,20 @@ class NetworkConnection implements Runnable
                
                //System.out.print("Loop_");
                
-               System.out.print("Sending: " + index);
+               //System.out.print("Sending: " + index);
                sendMessage(request + SPLIT_CHAR + index);
                
                AttemptSleep(10);
                   
                sendRequest();
                
-               System.out.print("Say Go");
+               //System.out.print("Say Go");
                sendMessage(CONTINUE_NOTE); 
                
                //if line is received?
                if ((request = receiveMessage()) != null)
                {
-                  System.out.print("Receiving: " + request);
+                  //System.out.print("Receiving: " + request);
                   
                   //Split line into parts
                   String[] splitLine = request.split(SPLIT_CHAR);
@@ -185,8 +187,8 @@ class NetworkConnection implements Runnable
                   }
                }
                
-               System.out.print("Wait Go");
-               System.out.print(receiveMessage());
+               //System.out.print("Wait Go");
+               continueMessage = receiveMessage();
                
                if ( request.equals("CLOSE") )
                {
@@ -296,7 +298,7 @@ class NetworkConnection implements Runnable
                }
                */
                
-               System.out.println("(Send:Reponce): " + request);
+               //System.out.println("(Send:Reponce): " + request);
                switch(request)
                {
                   case REQUEST_CLIENT_ID:
@@ -364,7 +366,7 @@ class NetworkConnection implements Runnable
             
          try 
          {
-               System.out.println("(Receive:Responce): " + request);
+               //System.out.println("(Receive:Responce): " + request);
                                 
                switch(request)
                {
@@ -466,6 +468,8 @@ class NetworkConnection implements Runnable
          {
             //Place into world
             AssessMode.world.GetKarts()[index] = currentKart;
+            
+            System.out.println("Gotten Client Kart: " + index);
          }
       }
       catch (ClassNotFoundException e)
@@ -507,6 +511,8 @@ class NetworkConnection implements Runnable
          {
             //Place into world
             AssessMode.world.GetControls()[index] = currentControl;
+            
+            System.out.println("Gotten Client Control: " + index);
          }
       }
       catch (ClassNotFoundException e)
