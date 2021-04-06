@@ -111,12 +111,31 @@ class NetworkConnection implements Runnable
             // send it
             output.flush();
             */
+            //Provide server with your ID
             request = REQUEST_CLIENT_ID;
          
             receiveRequest();
             
+            request = REQUEST_KART;
+            
             do 
             {
+               //Determine action
+               if (index >= AssessMode.world.GetKarts().length)
+               {
+                  //Kart -> Control -> Kart
+                  switch(request)
+                  {
+                     case REQUEST_KART:
+                        request = REQUEST_CONTROL;
+                        break;
+                     
+                     case REQUEST_CONTROL:
+                        request = REQUEST_KART;
+                        break;
+                  }
+               }
+               
                index = index % AssessMode.world.GetKarts().length;
             
                /*
@@ -131,8 +150,8 @@ class NetworkConnection implements Runnable
    				}
                */
                
-               //Determine action
-               request = REQUEST_KART;
+               
+               
                
                //System.out.print("Loop_");
                
