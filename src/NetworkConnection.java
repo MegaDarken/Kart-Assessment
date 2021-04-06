@@ -160,7 +160,7 @@ class NetworkConnection implements Runnable
                //System.out.print("Sending: " + index);
                sendMessage(request + SPLIT_CHAR + index);
                
-               AttemptSleep(10);
+               //AttemptSleep(10);
                   
                sendRequest();
                
@@ -181,7 +181,7 @@ class NetworkConnection implements Runnable
                      request = splitLine[0];
                      index = Integer.parseInt(splitLine[1]);
                      
-                     AttemptSleep(10);
+                     //AttemptSleep(10);
                      
                      receiveRequest();
                   }
@@ -195,7 +195,7 @@ class NetworkConnection implements Runnable
                   break;
                }
                
-               AttemptSleep(10);
+               //AttemptSleep(10);
                
                index++;
                
