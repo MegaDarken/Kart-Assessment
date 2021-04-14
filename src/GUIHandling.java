@@ -1,5 +1,6 @@
 //File: GUIHandling.java
 import javax.swing.*;
+import java.net.*;
 
 class GUIHandling implements Runnable
 {
@@ -12,7 +13,7 @@ class GUIHandling implements Runnable
    private final int KART_IMAGE_HEIGHT = 50;
    
    //Image(s)
-   private final String IMAGE_DIRECTORY = "../src/Graphics/";
+   private final String IMAGE_DIRECTORY = "/Graphics/";
    private final String IMAGE_KART_FILENAME = "Kart";
    private final String IMAGE_FILE_EXTENSION = ".png";
    
@@ -44,10 +45,22 @@ class GUIHandling implements Runnable
       
       for (int i = 0; i < KART_DIRECTIONS; i++)
       {
-         imageIcons[i] = new ImageIcon(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
-         imageIcons[i + (KART_DIRECTIONS)] = new ImageIcon(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_GREEN + i + IMAGE_FILE_EXTENSION));
-         imageIcons[i + (KART_DIRECTIONS * 2)] = new ImageIcon(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BLUE + i + IMAGE_FILE_EXTENSION));
-         imageIcons[i + (KART_DIRECTIONS * 3)] = new ImageIcon(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BOT + i + IMAGE_FILE_EXTENSION));
+         System.out.println(i);
+         System.out.println(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
+         
+         //*
+         imageIcons[i] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
+         imageIcons[i + (KART_DIRECTIONS)] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_GREEN + i + IMAGE_FILE_EXTENSION));
+         imageIcons[i + (KART_DIRECTIONS * 2)] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BLUE + i + IMAGE_FILE_EXTENSION));
+         imageIcons[i + (KART_DIRECTIONS * 3)] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BOT + i + IMAGE_FILE_EXTENSION));
+         //*/
+         
+         /*
+         imageIcons[i] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION);
+         imageIcons[i + (KART_DIRECTIONS)] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_GREEN + i + IMAGE_FILE_EXTENSION);
+         imageIcons[i + (KART_DIRECTIONS * 2)] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BLUE + i + IMAGE_FILE_EXTENSION);
+         imageIcons[i + (KART_DIRECTIONS * 3)] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BOT + i + IMAGE_FILE_EXTENSION);
+         //*/
       }
    }
    
