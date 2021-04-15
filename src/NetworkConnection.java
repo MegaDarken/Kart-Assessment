@@ -475,7 +475,7 @@ class NetworkConnection implements Runnable
             //Place into world
             AssessMode.world.GetKarts()[index] = currentKart;
             
-            System.out.println("Gotten Client Kart: " + index);
+            //System.out.println("Gotten Client Kart: " + index);
          }
       }
       catch (ClassNotFoundException e)
@@ -520,7 +520,7 @@ class NetworkConnection implements Runnable
             //Place into world
             AssessMode.world.GetControls()[index] = currentControl;
             
-            System.out.println("Gotten Client Control: " + index);
+            //System.out.println("Gotten Client Control: " + index);
          }
       }
       catch (ClassNotFoundException e)
