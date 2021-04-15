@@ -42,25 +42,33 @@ class GUIHandling implements Runnable
    private void LoadKartImages()
    {
       //System.out.println(System.getProperty("user.dir"));
-      
-      for (int i = 0; i < KART_DIRECTIONS; i++)
+      try
       {
-         System.out.println(i);
-         System.out.println(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
+      
+         for (int i = 0; i < KART_DIRECTIONS; i++)
+         {
+            System.out.println(i);
+            System.out.println(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
+            
+            //*
+            imageIcons[i] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
+            imageIcons[i + (KART_DIRECTIONS)] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_GREEN + i + IMAGE_FILE_EXTENSION));
+            imageIcons[i + (KART_DIRECTIONS * 2)] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BLUE + i + IMAGE_FILE_EXTENSION));
+            imageIcons[i + (KART_DIRECTIONS * 3)] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BOT + i + IMAGE_FILE_EXTENSION));
+            //*/
+            
+            /*
+            imageIcons[i] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION);
+            imageIcons[i + (KART_DIRECTIONS)] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_GREEN + i + IMAGE_FILE_EXTENSION);
+            imageIcons[i + (KART_DIRECTIONS * 2)] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BLUE + i + IMAGE_FILE_EXTENSION);
+            imageIcons[i + (KART_DIRECTIONS * 3)] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BOT + i + IMAGE_FILE_EXTENSION);
+            //*/
+         }
          
-         //*
-         imageIcons[i] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
-         imageIcons[i + (KART_DIRECTIONS)] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_GREEN + i + IMAGE_FILE_EXTENSION));
-         imageIcons[i + (KART_DIRECTIONS * 2)] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BLUE + i + IMAGE_FILE_EXTENSION));
-         imageIcons[i + (KART_DIRECTIONS * 3)] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BOT + i + IMAGE_FILE_EXTENSION));
-         //*/
-         
-         /*
-         imageIcons[i] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION);
-         imageIcons[i + (KART_DIRECTIONS)] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_GREEN + i + IMAGE_FILE_EXTENSION);
-         imageIcons[i + (KART_DIRECTIONS * 2)] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BLUE + i + IMAGE_FILE_EXTENSION);
-         imageIcons[i + (KART_DIRECTIONS * 3)] = new ImageIcon(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_BOT + i + IMAGE_FILE_EXTENSION);
-         //*/
+      } 
+      catch (NullPointerException e)
+      {
+         System.err.println(e);
       }
    }
    
