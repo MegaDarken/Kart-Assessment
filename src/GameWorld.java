@@ -132,6 +132,8 @@ public class GameWorld implements Runnable
                         if (isColliding)
                         {
                            System.out.println("Collision: " + i + " " + j);
+                           
+                           Karts[i].Collided(isColliding);
                         }
                      }
                   }
