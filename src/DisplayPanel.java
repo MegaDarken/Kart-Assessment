@@ -149,17 +149,24 @@ public class DisplayPanel extends JPanel implements ActionListener
       
          if(e.getSource() == timer)
          {
+            if (AssessMode.Running)
+            {
+               //handleImageAnimation();
+               Thread worldThread = new Thread(AssessMode.world);
+                          
+               //paintComponent();
+               Thread guiThread = new Thread(guiHandler);//UpdateKartImages(AssessMode.world.GetKarts())
+               
+               worldThread.start();//AssessMode.world.MoveKarts();
+               guiThread.start();
+               
+               repaint();
             
-            //handleImageAnimation();
-            Thread worldThread = new Thread(AssessMode.world);
-                       
-            //paintComponent();
-            Thread guiThread = new Thread(guiHandler);//UpdateKartImages(AssessMode.world.GetKarts())
-            
-            worldThread.start();//AssessMode.world.MoveKarts();
-            guiThread.start();
-            
-            repaint();
+            }
+            else
+            {
+               this.dispose();
+            }
          }
       
    }
