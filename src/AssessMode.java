@@ -12,7 +12,7 @@ public class AssessMode
    
    
    //Static Vars
-   static boolean AsServer;
+   static boolean Running;
    
    static GameWorld world;
    
@@ -53,6 +53,8 @@ public class AssessMode
    public static void main(String[] args)
    {
       System.out.println("Starting Assessment Client");
+      
+      this.Running = true;
       
       //Determine running mode
       //AsServer = Arrays.asList(args).contains(ARGUMENT_SERVER);
