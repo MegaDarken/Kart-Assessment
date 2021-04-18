@@ -54,7 +54,7 @@ public class AssessMode
    {
       System.out.println("Starting Assessment Client");
       
-      this.Running = true;
+      Running = true;
       
       //Determine running mode
       //AsServer = Arrays.asList(args).contains(ARGUMENT_SERVER);
