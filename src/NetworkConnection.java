@@ -481,6 +481,13 @@ class NetworkConnection implements Runnable
             
             //System.out.println("Gotten Client Kart: " + index);
          }
+         else
+         {
+            if (currentKart.Collided())
+            {
+               AssessMode.Running = false;
+            }
+         }
       }
       catch (ClassNotFoundException e)
       {
