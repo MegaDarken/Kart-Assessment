@@ -192,6 +192,8 @@ class NetworkConnection implements Runnable
                
                if ( request.equals("CLOSE") )
                {
+                  connected = false;
+               
                   break;
                }
                
