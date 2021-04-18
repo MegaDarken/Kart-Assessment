@@ -165,7 +165,7 @@ public class DisplayPanel extends JPanel implements ActionListener
             }
             else
             {
-               this.dispose();
+               AssessMode.GetFrame().dispose();
             }
          }
       
