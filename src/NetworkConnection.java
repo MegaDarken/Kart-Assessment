@@ -222,6 +222,8 @@ class NetworkConnection implements Runnable
       {
          System.out.println("Failed to run due to 'null' element");
       }
+      
+      AssessMode.Running = false;
    }
    
    public InetAddress GetHostAddress()
