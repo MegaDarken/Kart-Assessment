@@ -485,7 +485,9 @@ class NetworkConnection implements Runnable
          {
             if (currentKart.Collided())
             {
-               AssessMode.Running = false;
+               //AssessMode.Running = false;
+               
+               JOptionPane.showMessageDialog(frame, "You have been involved in a collision and can no longer race, you can still spectate though", "YOU LOSE", JOptionPane.PLAIN_MESSAGE);
             }
          }
       }
