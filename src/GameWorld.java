@@ -88,9 +88,10 @@ public class GameWorld implements Runnable
             controls[kart] = AssessMode.GetFrame().GetPanel().GetInputKeyMatrix();
          }
       
-         
-         Karts[kart].TickForward(controls[kart]);
-         
+         if (!Karts[kart].Collided())
+         {
+            Karts[kart].TickForward(controls[kart]);
+         }
          
          //Get Kart Image
          
