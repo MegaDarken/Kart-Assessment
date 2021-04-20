@@ -35,6 +35,10 @@ class NetworkConnection implements Runnable
    private ObjectOutputStream outputObject = null;
    private ObjectInputStream inputObject = null;
    
+   
+   private boolean collisionNotified;
+   
+   
    public NetworkConnection(InetAddress hostAddress, int hostPort)
    {
       //Connection type to server/client?
@@ -75,6 +79,7 @@ class NetworkConnection implements Runnable
          );
          
          connected = true;
+         collisionNotified = false;
 		} 
 		catch (UnknownHostException e)
 		{
@@ -488,7 +493,12 @@ class NetworkConnection implements Runnable
             {
                //AssessMode.Running = false;
                
-               JOptionPane.showMessageDialog(AssessMode.GetFrame(), "You have been involved in a collision and can no longer race, you can still spectate though", "YOU LOSE", JOptionPane.PLAIN_MESSAGE);
+               if (!collisionNotified)
+               {
+                  JOptionPane.showMessageDialog(AssessMode.GetFrame(), "You have been involved in a collision and can no longer race, you can still spectate though", "YOU LOSE", JOptionPane.PLAIN_MESSAGE);
+                  
+                  collisionNotified = true;
+               }
             }
          }
       }
