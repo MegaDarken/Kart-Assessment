@@ -2,6 +2,7 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import javax.swing.*;
 //import java.lang.*;
 //import java.util.concurrent.*;
 
@@ -487,7 +488,7 @@ class NetworkConnection implements Runnable
             {
                //AssessMode.Running = false;
                
-               JOptionPane.showMessageDialog(frame, "You have been involved in a collision and can no longer race, you can still spectate though", "YOU LOSE", JOptionPane.PLAIN_MESSAGE);
+               JOptionPane.showMessageDialog(AssessMode.GetFrame(), "You have been involved in a collision and can no longer race, you can still spectate though", "YOU LOSE", JOptionPane.PLAIN_MESSAGE);
             }
          }
       }
