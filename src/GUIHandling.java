@@ -47,8 +47,8 @@ class GUIHandling implements Runnable
       
          for (int i = 0; i < KART_DIRECTIONS; i++)
          {
-            System.out.println(i);
-            System.out.println(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
+            //System.out.println(i);
+            //System.out.println(getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
             
             //*
             imageIcons[i] = new ImageIcon(this.getClass().getResource(IMAGE_DIRECTORY + IMAGE_KART_FILENAME + IMAGE_LIVERY_RED + i + IMAGE_FILE_EXTENSION));
