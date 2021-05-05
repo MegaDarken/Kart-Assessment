@@ -18,7 +18,7 @@ s#p0doc
 s#q0test
 s#w0canvas
 !106;u
-a0	b68	c255	f%\011Assignment.jar	g%\011Assignment.zip	hManifest-Version\0111.0\011Main-Class\011AssessMode!2455;g
+a0	b68	c255	f%\011Assignment.jar	g%\011Assignment.zip	hManifest-Version\0111.0\011Main-Class\011AssessMode!2425;g
 %\011src%sGraphics%sKartBot0.png
 %\011src%sGraphics%sKartBlue13.png
 %\011src%sGraphics%sKartGreen4.png
@@ -31,7 +31,6 @@ a0	b68	c255	f%\011Assignment.jar	g%\011Assignment.zip	hManifest-Version\0111.0\0
 %\011src%sGraphics%sKartBot11.png
 %\011src%sGraphics%sKartBlue14.png
 %\011src%sGraphics%sKartBlue15.png
-%\011src%sThreadHandling.java
 %\011src%sGraphics%sKartBot12.png
 %\011src%sGraphics%sKartGreen2.png
 %\011src%sGraphics%sKartGreen11.png
@@ -93,7 +92,7 @@ a0	b68	c255	f%\011Assignment.jar	g%\011Assignment.zip	hManifest-Version\0111.0\0
 %\011src%sGraphics%sKartBot2.png
 %\011src%sGraphics%sKartRed12.png
 %\011src%sGraphics%sKartBlue1.png
-!2455;f
+!2425;f
 %\011src%sGraphics%sKartBot0.png
 %\011src%sGraphics%sKartBlue13.png
 %\011src%sGraphics%sKartGreen4.png
@@ -106,7 +105,6 @@ a0	b68	c255	f%\011Assignment.jar	g%\011Assignment.zip	hManifest-Version\0111.0\0
 %\011src%sGraphics%sKartBot11.png
 %\011src%sGraphics%sKartBlue14.png
 %\011src%sGraphics%sKartBlue15.png
-%\011src%sThreadHandling.java
 %\011src%sGraphics%sKartBot12.png
 %\011src%sGraphics%sKartGreen2.png
 %\011src%sGraphics%sKartGreen11.png
