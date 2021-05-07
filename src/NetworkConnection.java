@@ -489,16 +489,20 @@ class NetworkConnection implements Runnable
          }
          else
          {
-            if (currentKart.Collided())
+            if (currentKart != null)
             {
-               //AssessMode.Running = false;
-               
-               if (!collisionNotified)
+               if (currentKart.Collided())
                {
-                  JOptionPane.showMessageDialog(AssessMode.GetFrame(), "You have been involved in a collision and can no longer race, you can still spectate though", "YOU LOSE", JOptionPane.PLAIN_MESSAGE);
+                  //AssessMode.Running = false;
                   
-                  collisionNotified = true;
+                  if (!collisionNotified)
+                  {
+                     JOptionPane.showMessageDialog(AssessMode.GetFrame(), "You have been involved in a collision and can no longer race, you can still spectate though", "YOU LOSE", JOptionPane.PLAIN_MESSAGE);
+                     
+                     collisionNotified = true;
+                  }
                }
+               
             }
          }
       }
