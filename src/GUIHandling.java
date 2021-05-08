@@ -102,16 +102,30 @@ class GUIHandling implements Runnable
    
    private ImageIcon SelectKartImage(RaceKart currentKart)
    {
-      return imageIcons[SelectKartImageIndex(currentKart)];
+      int index = SelectKartImageIndex(currentKart);
+      
+      if (index >= 0)
+      {
+         return imageIcons[index];
+      }
+      else
+      {
+         return null;
+      }
    }
 
    public void UpdateKartImages(RaceKart[] Karts)
    {
       for(int i = 0; i < Karts.length; i++)
       {
-         imageLabels[i].setIcon(SelectKartImage(Karts[i]));
+         if(Karts[i] != null)
+         {
+         
+            imageLabels[i].setIcon(SelectKartImage(Karts[i]));
       
-         imageLabels[i].setBounds(Math.round(Karts[i].X()), Math.round(Karts[i].Y()), KART_IMAGE_WIDTH, KART_IMAGE_HEIGHT);
+            imageLabels[i].setBounds(Math.round(Karts[i].X()), Math.round(Karts[i].Y()), KART_IMAGE_WIDTH, KART_IMAGE_HEIGHT);
+         
+         }
       }
    }
 
