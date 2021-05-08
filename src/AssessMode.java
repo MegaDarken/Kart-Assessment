@@ -34,7 +34,7 @@ public class AssessMode
       
       String selection = (String)JOptionPane.showInputDialog(frame,
                     "Select your kart:",
-                    "Customized Dialog",
+                    "Kart Selection",
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     possibilities,possibilities[0]);
@@ -105,13 +105,20 @@ public class AssessMode
          //No Address...
          
          //Request from user
-         Scanner scan = new Scanner(System.in);
+         //Scanner scan = new Scanner(System.in);
          String userInput = "";
          
          try
          {
             System.out.println("Server Address:");
-            userInput = scan.nextLine();  // Read user input
+            //userInput = scan.nextLine();  // Read user input
+            
+            userInput = (String)JOptionPane.showInputDialog(frame,
+                    "Enter Server Address:",
+                    "Server Connection",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null,null);
             
             serverAddress = InetAddress.getByName(userInput);
             
