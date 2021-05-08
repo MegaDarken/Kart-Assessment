@@ -60,6 +60,8 @@ public class AssessMode
       //AsServer = Arrays.asList(args).contains(ARGUMENT_SERVER);
       world = new GameWorld();
          
+      //world.SetClientKart(1);//DEBUG
+      userKartSelection();
       
       //Get Server address
       InetAddress serverAddress = null;
@@ -134,8 +136,7 @@ public class AssessMode
       //{
       System.out.println("Client, Opening game window...");
    
-      //world.SetClientKart(1);//DEBUG
-      userKartSelection();
+      
    
       //Launch Window
       frame = new ClientFrame();
